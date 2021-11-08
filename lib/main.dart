@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-
+import 'dart:ui';
+import 'pages/login_page.dart';
+import 'pages/qr_creator.dart';
+import 'pages/qr_scanner.dart';
+import 'pages/central_page.dart';
+import 'pages/validate_qr.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -10,70 +15,32 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'Nome bonito para aplicação de PGI',
       theme: ThemeData(
-          primarySwatch: Colors.blue,
-      ),
-      darkTheme: ThemeData(
-          colorScheme: const ColorScheme.dark(
-              primary: Colors.red,
-              primaryVariant: Color(0xFF6D1712),
-              surface: Colors.red,
-              background: Colors.blue,
-          )
-
-      ),
-      home: const MyHomePage(title: 'PGI'),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        appBarTheme: const AppBarTheme(
+            color: Color(0xFFFFFFFF),
+            elevation: 0,
+            foregroundColor: Color(0xFF000000)
         ),
+        primarySwatch: Colors.red,
+        backgroundColor: const Color(0xFFFFFFFF),
+        bottomAppBarColor: const Color(0xFFFFFFFF),
+
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      initialRoute: '/',
+      routes: {
+        // When navigating to the "/" route, build the FirstScreen widget.
+        '/': (context) => const MainPage(),
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        '/scan': (context) => const ScanPage(),
+
+        '/generate': (context) => const ScanPage(),
+
+        '/validate': (context) => const ValidatePage(),
+      },
+      debugShowCheckedModeBanner: false,
     );
   }
 }
