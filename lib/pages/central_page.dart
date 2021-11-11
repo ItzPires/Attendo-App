@@ -11,19 +11,15 @@ class MainPage extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _MainPageState extends State<MainPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
-
         elevation: 0,
         title: const Text("Nome/Logo"),
         //foregroundColor: const Color(0xFF000000),
         //backgroundColor: const Color(0xFFFFFFFF),
       ),
-
       body: const Center(child: Text('')),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, '/scan'),
@@ -37,7 +33,7 @@ class _MainPageState extends State<MainPage> {
         child: Row(
           children: [
             const Spacer(flex: 1),
-            IconButton(icon: Icon(Icons.menu), onPressed: () { }),
+            IconButton(icon: Icon(Icons.menu), onPressed: () {}),
             const Spacer(flex: 4),
             IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
             const Spacer(flex: 1),

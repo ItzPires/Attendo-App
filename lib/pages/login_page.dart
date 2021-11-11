@@ -9,7 +9,6 @@ class LoginPage extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _LoginPageState extends State<LoginPage> {
-
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -18,5 +17,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
-

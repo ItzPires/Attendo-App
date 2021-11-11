@@ -12,25 +12,21 @@ class TestPage extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _TestPageState extends State<TestPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: const Text('ListTile with red background')),
-      body: const Center(
-          child: QRCodeWriter()
-      ),
+      appBar: AppBar(
+          centerTitle: true, title: const Text('ListTile with red background')),
+      body: const Center(child: QRCodeWriter()),
     );
   }
 }
 
-
-
 class QRCodeWriter extends StatelessWidget {
   const QRCodeWriter({Key? key}) : super(key: key);
 
-  String generateQRCODE(){
-    int _code = Random().nextInt(100000)+900000;
+  String generateQRCODE() {
+    int _code = Random().nextInt(100000) + 900000;
     return "$_code";
   }
 
