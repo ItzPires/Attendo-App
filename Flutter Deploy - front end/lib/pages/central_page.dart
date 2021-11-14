@@ -20,7 +20,7 @@ class _MainPageState extends State<MainPage> {
         //foregroundColor: const Color(0xFF000000),
         //backgroundColor: const Color(0xFFFFFFFF),
       ),
-      body: const Center(child: Text('')),
+      body: const Center(child: Text('kjdasljd')),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, '/scan'),
         tooltip: 'Scan Class QR Code',
@@ -33,7 +33,7 @@ class _MainPageState extends State<MainPage> {
         child: Row(
           children: [
             const Spacer(flex: 1),
-            IconButton(icon: Icon(Icons.menu), onPressed: () {}),
+            IconButton(icon: Icon(Icons.qr_code), onPressed: () {Navigator.pushNamed(context, '/generate');}),
             const Spacer(flex: 4),
             IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
             const Spacer(flex: 1),

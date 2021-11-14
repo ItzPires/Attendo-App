@@ -6,6 +6,13 @@ import 'pages/qr_scanner.dart';
 import 'pages/central_page.dart';
 import 'pages/validate_qr.dart';
 
+// TODO
+// - About Us
+// - Menu Esquerda
+// - Menu central - AGENDA:
+// Container - Calendário
+// Container - Lista de a fazer
+
 void main() {
   runApp(const MyApp());
 }
@@ -17,14 +24,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Nome bonito para aplicação de PGI',
+      title: 'Attendo',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
             color: Color(0xFFFFFFFF),
             elevation: 0,
             foregroundColor: Color(0xFF000000)),
-        primarySwatch: Colors.red,
-        backgroundColor: const Color(0xFFFFFFFF),
+        //Criar opções para pessoa escolher
+        primarySwatch: Colors.pink,
+        backgroundColor: //const Color(0xFFFFFFFF),
+        const Color(0xFFEE93E3),
         bottomAppBarColor: const Color(0xFFFFFFFF),
       ),
       initialRoute: '/',
@@ -34,7 +43,7 @@ class MyApp extends StatelessWidget {
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/scan': (context) => const ScanPage(),
 
-        '/generate': (context) => const ScanPage(),
+        '/generate': (context) => const TestPage(),
 
         '/validate': (context) => const ValidatePage(),
       },
