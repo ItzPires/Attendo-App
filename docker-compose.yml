@@ -13,14 +13,14 @@ services:
     ports:
       - "5432:5432"
 
-  web:
-    build: ./python
+  backend:
+    build: ./BackEnd
     container_name: api
     volumes:
-      - "./python/app:/app"
+      - "./BackEnd/attendoBE:/attendoBE"
     expose:
-      - "5000"
+      - "8000"
     ports:
-      - "8080:5000"
+      - "8000:8000"
     depends_on:
       - db

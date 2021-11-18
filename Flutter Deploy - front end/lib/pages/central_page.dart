@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'validate_qr.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -15,12 +13,9 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        title: const Text("Nome/Logo"),
-        //foregroundColor: const Color(0xFF000000),
-        //backgroundColor: const Color(0xFFFFFFFF),
-      ),
-      body: const Center(child: Text('kjdasljd')),
+        title: const Text("Attendo"),
+        ),
+      body: const Center(child: Text('Attendo app landing page')),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, '/scan'),
         tooltip: 'Scan Class QR Code',

@@ -7,9 +7,11 @@ import 'pages/central_page.dart';
 import 'pages/validate_qr.dart';
 
 // TODO
+// Login
+// Ecrã central de stor
 // - About Us
 // - Menu Esquerda
-// - Menu central - AGENDA:
+// - Menu central - AGENDA de aulas
 // Container - Calendário
 // Container - Lista de a fazer
 
@@ -28,12 +30,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
             color: Color(0xFFFFFFFF),
-            elevation: 0,
+            elevation: 2,
+            toolbarHeight: 55,
+            shadowColor: Color(0xFF000000),
             foregroundColor: Color(0xFF000000)),
-        //Criar opções para pessoa escolher
-        primarySwatch: Colors.pink,
-        backgroundColor: //const Color(0xFFFFFFFF),
-        const Color(0xFFEE93E3),
+        //TODO Criar opções para pessoa escolher
+        primarySwatch: Colors.green,
         bottomAppBarColor: const Color(0xFFFFFFFF),
       ),
       initialRoute: '/',
@@ -41,6 +43,8 @@ class MyApp extends StatelessWidget {
         // When navigating to the "/" route, build the FirstScreen widget.
         '/': (context) => const MainPage(),
         // When navigating to the "/second" route, build the SecondScreen widget.
+        '/login': (context) => const LoginPage(),
+
         '/scan': (context) => const ScanPage(),
 
         '/generate': (context) => const TestPage(),
