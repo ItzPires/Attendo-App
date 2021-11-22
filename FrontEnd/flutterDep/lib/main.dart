@@ -1,11 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:uc_here/constants.dart';
 import 'dart:ui';
+import 'package:url_strategy/url_strategy.dart';
+
 import 'pages/login_page.dart';
 import 'pages/qr_creator.dart';
 import 'pages/qr_scanner.dart';
 import 'pages/central_page.dart';
 import 'pages/validate_qr.dart';
-
+import 'pages/landing_page.dart';
 // TODO
 // Login
 // Ecrã central de stor
@@ -15,7 +20,8 @@ import 'pages/validate_qr.dart';
 // Container - Calendário
 // Container - Lista de a fazer
 
-void main() {
+void main() async {
+  setPathUrlStrategy();
   runApp(const MyApp());
 }
 
@@ -34,14 +40,15 @@ class MyApp extends StatelessWidget {
             toolbarHeight: 55,
             shadowColor: Color(0xFF000000),
             foregroundColor: Color(0xFF000000)),
+
         //TODO Criar opções para pessoa escolher
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.red,
         bottomAppBarColor: const Color(0xFFFFFFFF),
       ),
       initialRoute: '/',
       routes: {
         // When navigating to the "/" route, build the FirstScreen widget.
-        '/': (context) => const MainPage(),
+        '/': (context) => const LandingPage(),
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/login': (context) => const LoginPage(),
 

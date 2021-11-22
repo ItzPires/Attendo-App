@@ -10,3 +10,10 @@ COM DOCKER INSTALADO
 abrir links em 
 
 localhost:8000/{url}
+
+
+# Contas (privado)
+
+passes:
+xaucao123
+Xaucao123

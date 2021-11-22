@@ -10,6 +10,8 @@ RUN pip install psycopg2-binary
 
 RUN pip install djangorestframework
 
+RUN pip install django-cors-headers
+
 COPY . /attendoBE
 
 VOLUME ["/attendoBE"]

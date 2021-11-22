@@ -13,15 +13,15 @@ services:
     ports:
       - "5432:5432"
 
-  backend:
-    build: ./BackEnd
-    container_name: api
-    volumes:
-      - "./BackEnd/attendoBE:/attendoBE"
-    expose:
-      - "8000"
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
+  #backend:
+    #build: ./BackEnd
+    #container_name: api
+    #volumes:
+    #  - "./BackEnd/attendoBE:/attendoBE"
+    #expose:
+    #  - "8000"
+    #ports:
+    #  - "8000:8000"
+    #depends_on:
+    #  - db
   

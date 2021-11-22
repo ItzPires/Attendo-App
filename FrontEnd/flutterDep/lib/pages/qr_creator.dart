@@ -42,7 +42,7 @@ class QRCodeWriter extends StatelessWidget {
           color: Color(0xff000000),
         ),
         dataModuleStyle: const QrDataModuleStyle(
-          dataModuleShape: QrDataModuleShape.square,
+          dataModuleShape: QrDataModuleShape.circle,
           color: Color(0xff000000),
         ),
         // size: 320.0,

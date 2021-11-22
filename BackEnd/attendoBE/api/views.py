@@ -50,5 +50,48 @@ class StudentViews():
                 students_serializer.save()
                 return Response(students_serializer.data, status=status.HTTP_201_CREATED)
             return Response(students_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ProfessorViews():
+    # API endpoint that allows professor to be viewed.
+
+    #List all Professor/Add a new professor
+    @api_view(http_method_names=["GET", "POST"])
+    def professor_manage(request):
+
+        #Get all Professor
+        if(request.method == "GET"):
+            professor = Professor.objects.all()
+            students_serializer = StudentSerializer(students, many = True)
+            return Response(students_serializer.data)
+        
+        #Add a new Student
+        if(request.method == "POST"):  
+            students_serializer = StudentSerializer(data=request.data)
+            if(students_serializer.is_valid()):
+                students_serializer.save()
+                return Response(students_serializer.data, status=status.HTTP_201_CREATED)
+            return Response(students_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    @api_view(http_method_names=["GET", "PATCH"])
+    def student_search(request, number):
+        #Get student with this number
+        if(request.method == "GET"):
+            student = Student.objects.filter(student_number = number)
+            students_serializer = StudentSerializer(student, many = True)
+            if(students_serializer.data == []):
+                return Response(data = {"error":"Student not found"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(students_serializer.data)
+        
+        #Update a student with given number
+        if(request.method == "PATCH"):
+            student = Student.objects.filter(student_number = number)
+            
+            students_serializer = StudentSerializer(student, data = request.data, partial=True, many=True)
+            print(students_serializer.data)
+            if(students_serializer.is_valid()):
+                students_serializer.save()
+                return Response(students_serializer.data, status=status.HTTP_201_CREATED)
+            return Response(students_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 def index(render):
     return JsonResponse({"Our name":'<h1>We are ATTENDO</h1>'})
