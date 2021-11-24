@@ -35,10 +35,10 @@ class StudentViews():
             
             #Update a student with given number
             if(request.method == "PATCH"):
-                payload = request.get_json()
+                print(request)
                 cursor.execute("""SELECT * FROM ALUNO""")
                 data = cursor.fetchall()
-                return Response(payload)
+                return Response("w")
 
 class ProfessorViews():
     # API endpoint that allows professor to be viewed.
