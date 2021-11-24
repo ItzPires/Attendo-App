@@ -15,9 +15,9 @@ class StudentViews():
     @api_view(http_method_names=["GET", "POST"])
     def students_manage(request):
         with connection.cursor() as cursor:
-        #Get all Students
+            #Get all Students
             if(request.method == "GET"):
-                cursor.execute("""SELECT * FROM STUDENTS""")
+                cursor.execute("""SELECT * FROM ALUNO""")
                 data = cursor.fetchall()
                 return Response(data)
             
@@ -28,13 +28,17 @@ class StudentViews():
         
     @api_view(http_method_names=["GET", "PATCH"])
     def student_search(request, number):
-        #Get student with this number
-        if(request.method == "GET"):
-            return
-        
-        #Update a student with given number
-        if(request.method == "PATCH"):
-            return 
+        with connection.cursor() as cursor:
+            #Get student with this number
+            if(request.method == "GET"):
+                return
+            
+            #Update a student with given number
+            if(request.method == "PATCH"):
+                payload = request.get_json()
+                cursor.execute("""SELECT * FROM ALUNO""")
+                data = cursor.fetchall()
+                return Response(payload)
 
 class ProfessorViews():
     # API endpoint that allows professor to be viewed.
@@ -44,22 +48,20 @@ class ProfessorViews():
         with connection.cursor() as cursor:
         #Get all Professor
             if(request.method == "GET"):
-                cursor.execute("""SELECT * FROM STUDENTS""")
-                data = cursor.fetchall()
                 return
             
-            #Add a new Student
+            #Add a new Teacher
             if(request.method == "POST"):  
                 return
         
     @api_view(http_method_names=["GET", "PATCH"])
-    def student_search(request, number):
-        #Get student with this number
+    def teacher_search(request, number):
+        #Get teacher with this number
         with connection.cursor() as cursor:
             if(request.method == "GET"):
                 return
             
-            #Update a student with given number
+            #Update a teacher with given number
             if(request.method == "PATCH"):
                 return
 

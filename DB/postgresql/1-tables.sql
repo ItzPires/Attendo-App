@@ -12,7 +12,7 @@ CREATE TABLE aluno (
 CREATE TABLE cadeira (
 	id SERIAL,
 	nome			 	VARCHAR(512) NOT NULL,
-	ano			 		VARCHAR(512) NOT NULL,
+	ano			 		INTEGER NOT NULL,
 	curso 				VARCHAR(512) NOT NULL,
 	departamento		VARCHAR(512),
 	universidade		VARCHAR(512),
@@ -46,9 +46,9 @@ CREATE TABLE presenca (
 
 CREATE TABLE horario_semanal (
 	id		 			SERIAL UNIQUE,
-	dia_semana	 		SMALLINT NOT NULL,
-	hora_de_inicio		TIMESTAMP NOT NULL,
-	hora_de_fim	 		TIMESTAMP NOT NULL,
+	dia_semana	 		VARCHAR(512) NOT NULL,
+	hora_de_inicio		TIME NOT NULL,
+	hora_de_fim	 		TIME NOT NULL,
 	turma_id	 		INTEGER NOT NULL,
 	PRIMARY KEY(id)
 );
