@@ -1,0 +1,996 @@
+<svg width="300" height="300" viewBox="0 0 300 300" class="css-1j8o68f"><defs id="SvgjsDefs3466"><linearGradient gradientUnits="userSpaceOnUse" x1="24.95" y1="3.65" x2="24.95" y2="46.25" id="gradient-0"><stop offset="0" style="stop-color: rgba(187, 218, 85, 1)"></stop><stop offset="1" style="stop-color: rgba(135, 165, 36, 1)"></stop></linearGradient></defs><rect width="300" height="300" style="" data-bx-origin="0 0"></rect><g id="SvgjsG3467" featurekey="rootContainer" transform="matrix(6, 0, 0, 6, 0.299996, 0)" fill="#f6f6f6" data-bx-origin="0 0"><path xmlns="http://www.w3.org/2000/svg" d="M24.95 0a25 25 0 1 0 25 25 25 25 0 0 0-25-25zm0 46.91a22 22 0 1 1 22-22 22 22 0 0 1-22 21.99z" style="paint-order: fill; fill: rgb(255, 255, 255);"></path><path xmlns="http://www.w3.org/2000/svg" d="M24.95 3.65a21.3 21.3 0 1 0 21.3 21.3 21.33 21.33 0 0 0-21.3-21.3z" style="paint-order: fill; fill: rgb(255, 255, 255);"></path></g>  <g data-bx-origin="-0.611113 0" transform="matrix(0.073815, 0, 0, 0.073815, 40.86636, 115.866364)">
+    <g xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" width="2320px" height="2320px" viewBox="0 0 2320 2320" enable-background="new 0 0 2320 2320" xml:space="preserve" style="">
+      <g>
+        <g transform="translate(280,56) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(308,56) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(364,56) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,56) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(560,56) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,56) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,84) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,84) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(364,84) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(420,84) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(588,84) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,112) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(308,112) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,112) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,112) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(588,112) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,112) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(364,140) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,140) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(448,140) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(532,140) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(588,140) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(308,168) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,168) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(364,168) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(420,168) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(448,168) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(476,168) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,168) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(560,168) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(588,168) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,168) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,196) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,196) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(420,196) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(448,196) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(476,196) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,196) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(560,196) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,224) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,224) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,224) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(448,224) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,224) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(560,224) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,224) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,252) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(364,252) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(420,252) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(448,252) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(476,252) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,252) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(112,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(140,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(168,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(224,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(364,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(420,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(476,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(560,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(644,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(672,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(700,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(784,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(812,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(840,280) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(112,308) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(196,308) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,308) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(364,308) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,308) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(420,308) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(448,308) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(476,308) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,308) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(644,308) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(728,308) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(756,308) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(784,308) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(840,308) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(140,336) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(224,336) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(252,336) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,336) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(532,336) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,336) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(672,336) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(700,336) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(756,336) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(784,336) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(56,364) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(140,364) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(168,364) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,364) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(532,364) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(672,364) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(700,364) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(812,364) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(84,392) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(224,392) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(252,392) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,392) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(364,392) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(420,392) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(476,392) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(532,392) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,392) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(644,392) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(784,392) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(812,392) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(840,392) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(56,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(112,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(168,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(252,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(308,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(420,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(476,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(532,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(588,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(644,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(672,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(728,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(756,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(812,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(840,420) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(84,448) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(196,448) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(224,448) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,448) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(308,448) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(420,448) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(448,448) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(476,448) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(532,448) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(560,448) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(672,448) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(56,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(140,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(168,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(196,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(252,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(364,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(448,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(644,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(672,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(756,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(812,476) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(84,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(168,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(224,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(252,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(308,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(448,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(476,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(560,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(672,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(756,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(784,504) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(56,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(140,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(252,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(364,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(644,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(728,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(756,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(784,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(812,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(840,532) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(56,560) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(168,560) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(196,560) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(224,560) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,560) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(420,560) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(560,560) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(588,560) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(672,560) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(728,560) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(784,560) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(56,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(112,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(140,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(252,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(308,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(420,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(448,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(532,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(588,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(672,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(700,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(728,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(756,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(812,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(840,588) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(56,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(140,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(196,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(224,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(252,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(420,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(476,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(532,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(588,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(644,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(672,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(700,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(728,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(756,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(784,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(812,616) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,644) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,644) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,644) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(532,644) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(588,644) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,644) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(728,644) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(756,644) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(812,644) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(840,644) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(308,672) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(364,672) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(448,672) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,672) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(532,672) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(588,672) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,672) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(672,672) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(728,672) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(420,700) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,700) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(532,700) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(588,700) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,700) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(728,700) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(756,700) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(812,700) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(840,700) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,728) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(308,728) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,728) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(364,728) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(448,728) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(476,728) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(616,728) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(644,728) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(672,728) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(700,728) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(728,728) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(756,728) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(784,728) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(840,728) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,756) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(308,756) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,756) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,756) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,756) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(532,756) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(588,756) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(700,756) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(280,784) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(308,784) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,784) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,784) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(532,784) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(560,784) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(644,784) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(672,784) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(728,784) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(812,784) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(308,812) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,812) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(364,812) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(392,812) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(448,812) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,812) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(532,812) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(588,812) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(644,812) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(728,812) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(756,812) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(812,812) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(308,840) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(336,840) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(448,840) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(476,840) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(504,840) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(560,840) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(728,840) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(756,840) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(784,840) scale(4.8066666666667)">
+          <circle cx="3" cy="3" r="3"></circle>
+        </g>
+        <g transform="translate(56,56)">
+          <g transform="scale(14)">
+            <path d="M0,0v14h14V0H0z M12,12H2V2h10V12z"></path>
+          </g>
+        </g>
+        <g transform="translate(672,56)">
+          <g transform="scale(14)">
+            <path d="M0,0v14h14V0H0z M12,12H2V2h10V12z"></path>
+          </g>
+        </g>
+        <g transform="translate(56,672)">
+          <g transform="scale(14)">
+            <path d="M0,0v14h14V0H0z M12,12H2V2h10V12z"></path>
+          </g>
+        </g>
+        <g transform="translate(112,112)">
+          <g transform="scale(14)">
+            <rect width="6" height="6"></rect>
+          </g>
+        </g>
+        <g transform="translate(728,112)">
+          <g transform="scale(14)">
+            <rect width="6" height="6"></rect>
+          </g>
+        </g>
+        <g transform="translate(112,728)">
+          <g transform="scale(14)">
+            <rect width="6" height="6"></rect>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g><g id="SvgjsG3469" featurekey="ujU5uU-0" transform="matrix(2.140244, 0, 0, 2.286585, 119.571953, 120.280487)" fill="#111111" data-bx-origin="-0.938055 -4.685715"><path d="M0.2 20 l0 -2.24 l0.42 -0.28 l1.82 -8.96 l-0.42 -0.28 l0 -2.24 l5.32 0 l0 2.24 l-0.42 0.28 l1.82 8.96 l0.42 0.28 l0 2.24 l-2.48 0 l-0.62 -3.08 l-2.76 0 l-0.62 3.08 l-2.48 0 z M3.82 14.4 l1.72 0 l-0.86 -4.28 z M12.48 20 l0 -2.24 l0.42 -0.28 l0 -8.96 l-0.42 0 l-0.28 0.42 l-2.24 0 l0 -2.94 l8.4 0 l0 2.94 l-2.24 0 l-0.28 -0.42 l-0.42 0 l0 8.96 l0.42 0.28 l0 2.24 l-3.36 0 z M22.080000000000002 20 l0 -2.24 l0.42 -0.28 l0 -8.96 l-0.42 0 l-0.28 0.42 l-2.24 0 l0 -2.94 l8.4 0 l0 2.94 l-2.24 0 l-0.28 -0.42 l-0.42 0 l0 8.96 l0.42 0.28 l0 2.24 l-3.36 0 z M29.160000000000004 20 l0 -2.24 l0.42 -0.28 l0 -8.96 l-0.42 -0.28 l0 -2.24 l7.28 0 l0 2.94 l-2.24 0 l-0.28 -0.42 l-1.82 0 l0 3.22 l3.22 0 l0 2.52 l-3.22 0 l0 3.22 l1.82 0 l0.28 -0.42 l2.24 0 l0 2.94 l-7.28 0 z M37.64000000000001 20 l0 -2.24 l0.42 -0.28 l0 -8.96 l-0.42 -0.28 l0 -2.24 l3.1 0 l2.92 7.48 l0 -4.96 l-0.42 -0.28 l0 -2.24 l3.36 0 l0 2.24 l-0.42 0.28 l0 11.48 l-2.68 0 l-2.92 -7.48 l0 4.96 l0.42 0.28 l0 2.24 l-3.36 0 z M47.800000000000004 20 l0 -2.24 l0.42 -0.28 l0 -8.96 l-0.42 -0.28 l0 -2.24 l6.68 0 l1.86 1.86 l0 10.28 l-1.86 1.86 l-6.68 0 z M50.74 17.48 l2.7 0 l0.38 -0.38 l0 -8.2 l-0.38 -0.38 l-2.7 0 l0 8.96 z M59.400000000000006 20 l-1.86 -1.86 l0 -10.28 l1.86 -1.86 l4.54 0 l1.86 1.86 l0 10.28 l-1.86 1.86 l-4.54 0 z M60.440000000000005 17.48 l2.46 0 l0.38 -0.38 l0 -8.2 l-0.38 -0.38 l-2.46 0 l-0.38 0.38 l0 8.2 z"></path></g></svg>

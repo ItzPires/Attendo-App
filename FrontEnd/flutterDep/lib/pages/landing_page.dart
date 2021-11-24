@@ -17,149 +17,127 @@ class _LandingPagePageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
 
-    final TextStyle _style = GoogleFonts.abel(
-        textStyle: TextStyle(
-            fontWeight: FontWeight.normal,
-            fontSize: math.max((_size.shortestSide / 50), 14)),
-        color: Colors.black);
     if (_size.width > 600) {
       return Scaffold(
-          body: ConstrainedBox(
-              constraints: const BoxConstraints(minHeight: 400, minWidth: 600),
-              child: Column(
-                children: const [
-                  Spacer(flex: 2),
-                  Expanded(
-                      flex: 10, child: Center(child: ResponsiveWebDesktop())),
-                  Spacer(flex: 2),
-                ],
-              )));
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          elevation: 0,
+          toolbarHeight: _size.height / 9,
+        ),
+        body: ResponsiveWebDesktop(),
+        bottomNavigationBar: BottomAppBar(
+          elevation: 0,
+          child: Container(
+            child: StaticText(),
+            padding:
+                EdgeInsets.fromLTRB(_size.width / 6, 5, _size.width / 6, 5),
+            height: _size.height / 7,
+          ),
+        ),
+      );
     } else {
       return Scaffold(
-        body: Column(children: [
-          Container(
-              // A fixed-height child.
-              child: DrawLogo(),
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 30)),
-          Divider(
-            color: Colors.black,
-            thickness: 2,
-            height: 0,
+          appBar: AppBar(
+            title: Transform.scale(scale: 0.5, child: const DrawLogo()),
+            centerTitle: true,
           ),
-          Container(
-              child: StaticText(),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30)),
-          Container(
-              child: AnimatedText(),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 70)),
-        ]),
-      );
+          body: SingleChildScrollView(
+            child: Column(children: [
+              Container(
+                  child: const StaticText(),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 30)),
+              Container(
+                  child: const AnimatedText(),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 70)),
+            ]),
+          ));
     }
   }
 }
 
-class ResponsiveWebDesktop extends StatefulWidget {
+class ResponsiveWebDesktop extends StatelessWidget {
   const ResponsiveWebDesktop({Key? key}) : super(key: key);
-  @override
-  State<ResponsiveWebDesktop> createState() => _ResponsiveWebDesktopPageState();
-}
 
-class _ResponsiveWebDesktopPageState extends State<ResponsiveWebDesktop> {
   @override
   Widget build(BuildContext context) {
-    return Row(children: const [
-      Expanded(flex: 60, child: DrawLogo()),
-      VerticalDivider(
-        color: Colors.black,
-        thickness: 2,
-        width: 20,
-      ),
-      Spacer(
-        flex: 5,
-      ),
-      Expanded(flex: 100, child: DescriptionText()),
-      Spacer(
-        flex: 8,
-      ),
-    ]);
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+          Flexible(
+            flex: 3,
+            child: DrawLogo(),
+          ),
+          VerticalDivider(
+            color: Colors.black,
+            thickness: 2,
+          ),
+          Flexible(
+            flex: 5,
+            child: DescriptionText(),
+          ),
+        ]);
   }
 }
 
-class DrawLogo extends StatefulWidget {
+class DrawLogo extends StatelessWidget {
   const DrawLogo({Key? key}) : super(key: key);
 
-  @override
-  State<DrawLogo> createState() => _DrawLogoPageState();
-}
-
-/// This is the private State class that goes with MyStatefulWidget.
-class _DrawLogoPageState extends State<DrawLogo> {
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
       'assets/images/logo.svg',
-      clipBehavior: Clip.none,
+      clipBehavior: Clip.antiAlias,
       color: const Color(0xFF000000),
     );
   }
 }
 
-class DescriptionText extends StatefulWidget {
+class DescriptionText extends StatelessWidget {
   const DescriptionText({Key? key}) : super(key: key);
 
-  @override
-  State<DescriptionText> createState() => _DescriptionTextPageState();
-}
-
-/// This is the private State class that goes with MyStatefulWidget.
-class _DescriptionTextPageState extends State<DescriptionText> {
   @override
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
 
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(child: StaticText(), height: 100),
-          Container(child: AnimatedText(), height: 110)
-        ]);
+    return SingleChildScrollView(
+      child: Container(
+        width: _size.width / 2,
+        child: const AnimatedText(),
+      ),
+    );
   }
 }
 
-class AnimatedText extends StatefulWidget {
+class AnimatedText extends StatelessWidget {
   const AnimatedText({Key? key}) : super(key: key);
 
-  @override
-  State<AnimatedText> createState() => _AnimatedTextPageState();
-}
-
-/// This is the private State class that goes with MyStatefulWidget.
-class _AnimatedTextPageState extends State<AnimatedText> {
   @override
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
     final TextStyle _styleAnimated = GoogleFonts.abel(
       textStyle: TextStyle(
         fontWeight: FontWeight.normal,
-        fontSize: math.max((_size.longestSide / 60), 14),
+        fontSize: math.max((_size.longestSide / 60), 16),
       ),
     );
 
     final TextStyle _styleAnimatedBold = GoogleFonts.abel(
       textStyle: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: math.max((_size.longestSide / 40), 14)),
+          fontSize: math.max((_size.longestSide / 40), 20)),
     );
-    return Column(children: [
+    return Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
       AnimatedTextKit(
         isRepeatingAnimation: true,
         repeatForever: true,
         animatedTexts: [
           FadeAnimatedText(
             'Objetivo da aplicação:',
-            duration: const Duration(seconds: 10),
+            duration: const Duration(seconds: 5),
             textAlign: TextAlign.center,
             textStyle: _styleAnimatedBold,
             fadeOutBegin: 0.9,
@@ -167,7 +145,7 @@ class _AnimatedTextPageState extends State<AnimatedText> {
           ),
           FadeAnimatedText(
             'Modo de funcionamento:',
-            duration: const Duration(seconds: 10),
+            duration: const Duration(seconds: 5),
             textAlign: TextAlign.center,
             textStyle: _styleAnimatedBold,
             fadeOutBegin: 0.9,
@@ -175,7 +153,7 @@ class _AnimatedTextPageState extends State<AnimatedText> {
           ),
           FadeAnimatedText(
             'Porquê esta aplicação:',
-            duration: const Duration(seconds: 10),
+            duration: const Duration(seconds: 5),
             textAlign: TextAlign.center,
             textStyle: _styleAnimatedBold,
             fadeOutBegin: 0.9,
@@ -189,23 +167,23 @@ class _AnimatedTextPageState extends State<AnimatedText> {
         animatedTexts: [
           FadeAnimatedText(
             'Simplificar a marcação de presenças nas aulas através da utilização de um QR Code para marcar as presenças. ',
-            duration: const Duration(seconds: 10),
-            textAlign: TextAlign.justify,
+            duration: const Duration(seconds: 5),
+            textAlign: TextAlign.center,
             textStyle: _styleAnimated,
             fadeOutBegin: 0.9,
             fadeInEnd: 0.1,
           ),
           FadeAnimatedText(
             'Este QR Code vai ser gerado através deste site pelo Professor, que na respetiva aula o partilha com os alunos. Estes, utilizando o telemóvel, lêem o Qr Code com a aplicação, ficando, assim, marcada a sua presença.',
-            duration: const Duration(seconds: 10),
-            textAlign: TextAlign.justify,
+            duration: const Duration(seconds: 5),
+            textAlign: TextAlign.center,
             textStyle: _styleAnimated,
             fadeOutBegin: 0.9,
             fadeInEnd: 0.1,
           ),
           FadeAnimatedText(
             'Esta ideia de aplicação surgiu no contexto de uma possível solução para um problema comum a algumas faculdades: dificuldade em marcar e controlar as presenças nas aulas. ',
-            duration: const Duration(seconds: 10),
+            duration: const Duration(seconds: 5),
             textAlign: TextAlign.center,
             textStyle: _styleAnimated,
             fadeOutBegin: 0.9,
@@ -217,15 +195,9 @@ class _AnimatedTextPageState extends State<AnimatedText> {
   }
 }
 
-class StaticText extends StatefulWidget {
+class StaticText extends StatelessWidget {
   const StaticText({Key? key}) : super(key: key);
 
-  @override
-  State<StaticText> createState() => _StaticTextPageState();
-}
-
-/// This is the private State class that goes with MyStatefulWidget.
-class _StaticTextPageState extends State<StaticText> {
   @override
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
@@ -233,13 +205,13 @@ class _StaticTextPageState extends State<StaticText> {
       textStyle: TextStyle(
           fontWeight: FontWeight.bold,
           color: Colors.black,
-          fontSize: math.max((_size.longestSide / 40), 14)),
+          fontSize: math.max((_size.longestSide / 50), 18)),
     );
     final TextStyle _style = GoogleFonts.abel(
       textStyle: TextStyle(
           fontWeight: FontWeight.normal,
           color: Colors.black,
-          fontSize: math.max((_size.longestSide / 60), 14)),
+          fontSize: math.max((_size.longestSide / 70), 16)),
     );
     return RichText(
         textAlign: TextAlign.center,
