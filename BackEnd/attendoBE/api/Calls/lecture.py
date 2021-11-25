@@ -8,58 +8,58 @@ import json
 from .error import error
 
 # Create your views here.
-class SubjectViews():
+class LectureViews():
     # API endpoint that allows professor to be viewed.
     #List all Professor/Add a new professor
     @api_view(http_method_names=["GET", "POST"])
-    def subject_manage(request):
+    def lecture_manage(request):
         with connection.cursor() as cursor:
-            #Get Subject list
+            #Get lecture list
             if(request.method == "GET"):
-                cursor.execute("""SELECT * FROM cadeira""")
+                cursor.execute("""SELECT * FROM aula""")
                 data = cursor.fectchall()
                 response = []
                 for user in data:
-                    to_add = {"nome":user[1], "ano":user[2], "curso":user[3], "departamento":user[4], "universidade":user[5], "professor(id)":user[6]}
+                    to_add = {"sala":user[1], "qrcode":user[2], "horario_id":user[3], "turma_id":user[4]}
                     response.append(to_add)
                 return Response(response)
             
-            #Add a new Subject
+            #Add a new lecture
             if(request.method == "POST"):
                 data = json.loads(request.body)
                 cursor.execute("""BEGIN TRANSACTION""")
-                statement = ("""INSERT INTO cadeira (nome, ano, curso, departamento, univesidade, professor_id) VALUES(%s, %s, %s, %s, %s, %s)""")
-                values = (data["name"], data["year"], data["course"], data["department"], data["university"], data["teacher"])
+                statement = ("""INSERT INTO aula (sala, qrcode, horario_id, turma_id) VALUES(%s, %s, %s, %s)""")
+                values = (data["classroom"], data["qrcode"], data["schedule"], data["class"])
                 try:
                     cursor.execute(statement, values)
                     cursor.execute("commit")
                     return JsonResponse({'Sucesso': 1})
                 #to do
                 except DatabaseError:
-                    return JsonResponse(error("Erro ao inserir cadeira"))
+                    return JsonResponse(error("Erro ao inserir aula"))
         
     @api_view(http_method_names=["GET", "PATCH"])
-    def subject_search(request, id):
-        #Get subject with this number
+    def lecture_search(request, id):
+        #Get lecture with this number
         with connection.cursor() as cursor:
             if(request.method == "GET"):
 
-                statement = ("""SELECT * FROM cadeira WHERE id = %s""", json.loads("id"))
+                statement = ("""SELECT * FROM aula WHERE id = %s""", json.loads("id"))
                 cursor.execute(statement)
                 data = cursor.fetchall()
                 return JsonResponse(data)
             
-            #Update a subject with given number
+            #Update a lecture with given number
             if(request.method == "PATCH"):
                 try:
                     data = json.loads(request.body)
                     cursor.execute("""BEGIN TRANSACTION""")
-                    cursor.execute("""SELECT * FROM professor WHERE id = %s FOR UPDATE""", (id,))
-                    statement = """UPDATE professor SET nome = %s, ano = %s, curso = %s, departamento = %s, univesidade = %s, professor_id = %s WHERE id = %s"""
-                    values = (data["name"], data["year"], data["course"], data["department"], data["university"], data["teacher"], id)
+                    cursor.execute("""SELECT * FROM aula WHERE id = %s FOR UPDATE""", (id,))
+                    statement = """UPDATE aula SET sala = %s, qrcode = %s, horario_id = %s, turma_id = %s WHERE id = %s"""
+                    values = (data["classroom"], data["qrcode"], data["schedule"], data["class"], id)
                     cursor.execute(statement, values)
                     print(values)
                     cursor.execute("COMMIT")
                     return JsonResponse({'sucesso': 1})
                 except DatabaseError:
-                    return JsonResponse(error("Nao foi possivel atualizar as informacoes da cadeira"))
+                    return JsonResponse(error("Nao foi possivel atualizar as informacoes da aula"))
