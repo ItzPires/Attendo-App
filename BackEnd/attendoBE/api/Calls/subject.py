@@ -28,7 +28,7 @@ class SubjectViews():
             if(request.method == "POST"):
                 data = json.loads(request.body)
                 cursor.execute("""BEGIN TRANSACTION""")
-                statement = ("""INSERT INTO cadeira (nome, ano, curso, departamento, univesidade, professor) VALUES(%s, %s, %s, %s, %s, %s)""")
+                statement = ("""INSERT INTO cadeira (nome, ano, curso, departamento, univesidade, professor_id) VALUES(%s, %s, %s, %s, %s, %s)""")
                 values = (data["name"], data["year"], data["course"], data["department"], data["university"], data["teacher"])
                 try:
                     cursor.execute(statement, values)
@@ -44,19 +44,19 @@ class SubjectViews():
         with connection.cursor() as cursor:
             if(request.method == "GET"):
 
-                statement = ("""SELECT * FROM TEACHER WHERE id = %s""", json.loads("id"))
+                statement = ("""SELECT * FROM cadeira WHERE id = %s""", json.loads("id"))
                 cursor.execute(statement)
                 data = cursor.fetchall()
                 return JsonResponse(data)
             
-            #Update a teacher with given number
+            #Update a subject with given number
             if(request.method == "PATCH"):
                 try:
                     data = json.loads(request.body)
                     cursor.execute("""BEGIN TRANSACTION""")
                     cursor.execute("""SELECT * FROM professor WHERE id = %s FOR UPDATE""", (id,))
-                    statement = """UPDATE professor SET mail = %s, password = %s, nome = %s WHERE id = %s"""
-                    values = (data["mail"], data["password"], data["name"], id)
+                    statement = """UPDATE professor SET nome = %s, ano = %s, curso = %s, departamento = %s, univesidade = %s, professor_id = %s WHERE id = %s"""
+                    values = (data["name"], data["year"], data["course"], data["department"], data["university"], data["teacher"], id)
                     cursor.execute(statement, values)
                     print(values)
                     cursor.execute("COMMIT")
