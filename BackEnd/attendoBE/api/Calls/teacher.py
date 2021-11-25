@@ -36,7 +36,7 @@ class ProfessorViews():
                     return JsonResponse({'Sucesso': 1})
                 #to do
                 except DatabaseError:
-                    return JsonResponse(error("Erro ao inserir professor"))
+                    return JsonResponse(error("Error adding teacher"))
         
     @api_view(http_method_names=["GET", "PATCH"])
     def teacher_search(request, id):
@@ -62,4 +62,4 @@ class ProfessorViews():
                     cursor.execute("COMMIT")
                     return JsonResponse({'sucesso': 1})
                 except DatabaseError:
-                    return JsonResponse(error("Nao foi possivel atualizar as informacoes do professor"))
+                    return JsonResponse(error("Unable to update teacher information"))

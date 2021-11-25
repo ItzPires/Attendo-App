@@ -36,7 +36,7 @@ class LectureViews():
                     return JsonResponse({'Sucesso': 1})
                 #to do
                 except DatabaseError:
-                    return JsonResponse(error("Erro ao inserir aula"))
+                    return JsonResponse(error("Error adding lecture"))
         
     @api_view(http_method_names=["GET", "PATCH"])
     def lecture_search(request, id):
@@ -62,4 +62,4 @@ class LectureViews():
                     cursor.execute("COMMIT")
                     return JsonResponse({'sucesso': 1})
                 except DatabaseError:
-                    return JsonResponse(error("Nao foi possivel atualizar as informacoes da aula"))
+                    return JsonResponse(error("Unable to update lecture information"))

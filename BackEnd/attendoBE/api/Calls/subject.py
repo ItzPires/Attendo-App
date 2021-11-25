@@ -36,7 +36,7 @@ class SubjectViews():
                     return JsonResponse({'Sucesso': 1})
                 #to do
                 except DatabaseError:
-                    return JsonResponse(error("Erro ao inserir cadeira"))
+                    return JsonResponse(error("Error adding subject"))
         
     @api_view(http_method_names=["GET", "PATCH"])
     def subject_search(request, id):
@@ -62,4 +62,4 @@ class SubjectViews():
                     cursor.execute("COMMIT")
                     return JsonResponse({'sucesso': 1})
                 except DatabaseError:
-                    return JsonResponse(error("Nao foi possivel atualizar as informacoes da cadeira"))
+                    return JsonResponse(error("Unable to update subject information"))
