@@ -12,6 +12,9 @@ RUN pip install djangorestframework
 
 RUN pip install django-cors-headers
 
+RUN pip install pyjwt
+
+
 COPY . /attendoBE
 
 VOLUME ["/attendoBE"]

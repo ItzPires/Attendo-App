@@ -1,5 +1,5 @@
 CREATE TABLE aluno (
-	id Serial,
+	id 					Serial,
 	numero		 		BIGINT UNIQUE NOT NULL,
 	mail	 			VARCHAR(512),
 	password	 		VARCHAR(512) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE aluno (
 );
 
 CREATE TABLE cadeira (
-	id SERIAL,
+	id 					SERIAL,
 	nome			 	VARCHAR(512) NOT NULL,
 	ano			 		INTEGER NOT NULL,
 	curso 				VARCHAR(512) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE presenca (
 );
 
 CREATE TABLE horario_semanal (
-	id		 			SERIAL UNIQUE,
+	id		 			SERIAL,
 	dia_semana	 		VARCHAR(512) NOT NULL,
 	hora_de_inicio		TIME NOT NULL,
 	hora_de_fim	 		TIME NOT NULL,

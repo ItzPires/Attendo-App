@@ -1,4 +1,10 @@
 {
+	"info": {
+		"_postman_id": "be2a4f5e-472c-4824-8090-053e880b141f",
+		"name": "Attendo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [{
 			"name": "Teachers",
 			"item": [
 				{
@@ -62,4 +68,5 @@
 					"response": []
 				}
 			]
-		}
+		}]
+	}
