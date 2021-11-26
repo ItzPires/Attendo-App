@@ -36,7 +36,7 @@ class StudentViews():
                     cursor.execute("COMMIT")
                     return JsonResponse({'Sucesso': 1})
                 except DatabaseError:
-                    return JsonResponse(error("Erro ao inserir aluno"))
+                    return JsonResponse(error("Error adding student"))
         
     @api_view(http_method_names=["GET", "PATCH"])
     def student_search(request, number):
@@ -60,4 +60,4 @@ class StudentViews():
                     return JsonResponse({'Sucesso': 1})
                 except DatabaseError:
                     cursor.execute("ROLLBACK")
-                    return JsonResponse(error("Erro ao Atualizar alunos"))
+                    return JsonResponse(error("Unable to update student information"))
