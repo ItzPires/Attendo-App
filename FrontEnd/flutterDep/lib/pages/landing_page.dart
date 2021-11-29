@@ -24,11 +24,11 @@ class _LandingPagePageState extends State<LandingPage> {
           elevation: 0,
           toolbarHeight: _size.height / 9,
         ),
-        body: ResponsiveWebDesktop(),
+        body: const ResponsiveWebDesktop(),
         bottomNavigationBar: BottomAppBar(
           elevation: 0,
           child: Container(
-            child: StaticText(),
+            child: const StaticText(),
             padding:
                 EdgeInsets.fromLTRB(_size.width / 6, 5, _size.width / 6, 5),
             height: _size.height / 7,
@@ -118,6 +118,7 @@ class AnimatedText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
+    int time = 10;
     final TextStyle _styleAnimated = GoogleFonts.abel(
       textStyle: TextStyle(
         fontWeight: FontWeight.normal,
@@ -137,7 +138,7 @@ class AnimatedText extends StatelessWidget {
         animatedTexts: [
           FadeAnimatedText(
             'Objetivo da aplicação:',
-            duration: const Duration(seconds: 5),
+            duration: Duration(seconds: time),
             textAlign: TextAlign.center,
             textStyle: _styleAnimatedBold,
             fadeOutBegin: 0.9,
@@ -145,7 +146,7 @@ class AnimatedText extends StatelessWidget {
           ),
           FadeAnimatedText(
             'Modo de funcionamento:',
-            duration: const Duration(seconds: 5),
+            duration: Duration(seconds: time),
             textAlign: TextAlign.center,
             textStyle: _styleAnimatedBold,
             fadeOutBegin: 0.9,
@@ -153,7 +154,7 @@ class AnimatedText extends StatelessWidget {
           ),
           FadeAnimatedText(
             'Porquê esta aplicação:',
-            duration: const Duration(seconds: 5),
+            duration: Duration(seconds: time),
             textAlign: TextAlign.center,
             textStyle: _styleAnimatedBold,
             fadeOutBegin: 0.9,
@@ -167,15 +168,15 @@ class AnimatedText extends StatelessWidget {
         animatedTexts: [
           FadeAnimatedText(
             'Simplificar a marcação de presenças nas aulas através da utilização de um QR Code para marcar as presenças. ',
-            duration: const Duration(seconds: 5),
+            duration: Duration(seconds: time),
             textAlign: TextAlign.center,
             textStyle: _styleAnimated,
             fadeOutBegin: 0.9,
             fadeInEnd: 0.1,
           ),
           FadeAnimatedText(
-            'Este QR Code vai ser gerado através deste site pelo Professor, que na respetiva aula o partilha com os alunos. Estes, utilizando o telemóvel, lêem o Qr Code com a aplicação, ficando, assim, marcada a sua presença.',
-            duration: const Duration(seconds: 5),
+            'O professor gera um QR Code através deste site e na aula partilha-o com os alunos.\nOs alunos lêem o Qr Code com a aplicação, ficando, assim, marcada a sua presença.',
+            duration: Duration(seconds: time),
             textAlign: TextAlign.center,
             textStyle: _styleAnimated,
             fadeOutBegin: 0.9,
@@ -183,7 +184,7 @@ class AnimatedText extends StatelessWidget {
           ),
           FadeAnimatedText(
             'Esta ideia de aplicação surgiu no contexto de uma possível solução para um problema comum a algumas faculdades: dificuldade em marcar e controlar as presenças nas aulas. ',
-            duration: const Duration(seconds: 5),
+            duration: Duration(seconds: time),
             textAlign: TextAlign.center,
             textStyle: _styleAnimated,
             fadeOutBegin: 0.9,
@@ -208,20 +209,17 @@ class StaticText extends StatelessWidget {
           fontSize: math.max((_size.longestSide / 50), 18)),
     );
     final TextStyle _style = GoogleFonts.abel(
-      textStyle: TextStyle(
-          fontWeight: FontWeight.normal,
-          color: Colors.black,
-          fontSize: math.max((_size.longestSide / 70), 16)),
+      textStyle: const TextStyle(
+          fontWeight: FontWeight.normal, color: Colors.black, fontSize: 13),
     );
     return RichText(
         textAlign: TextAlign.center,
         overflow: TextOverflow.clip,
         text: TextSpan(
           children: [
-            TextSpan(text: "Attendo", style: _styleBold),
             TextSpan(
                 text:
-                    " é uma aplicação desenvolvida por um grupo de estudantes do 3º Ano de Engenharia Informática da Universidade de Coimbra no âmbito da cadeia de Processos de Gestão e Inovação.",
+                    "Aviso legal: os conteúdos constantes website foram realizados por alunos no âmbito de uma disciplina– Processos de Gestão e Inovação - do 3º ano da licenciatura de Engenharia Informática da Faculdade de Ciências e Tecnologia da Universidade de Coimbra (FCTUC), pelo que a FCTUC não se responsabiliza pelo seu conteúdo",
                 style: _style)
           ],
         ));
