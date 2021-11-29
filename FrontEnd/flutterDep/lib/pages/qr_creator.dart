@@ -26,7 +26,7 @@ class QRCodeWriter extends StatelessWidget {
   const QRCodeWriter({Key? key}) : super(key: key);
 
   String generateQRCODE() {
-    int _code = Random().nextInt(100000) + 900000;
+    int _code = Random().nextInt(900000) + 100000;
     return "$_code";
   }
 
