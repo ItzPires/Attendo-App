@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:math' as math;
+import 'package:uc_here/const/logo.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -80,19 +81,6 @@ class ResponsiveWebDesktop extends StatelessWidget {
             child: DescriptionText(),
           ),
         ]);
-  }
-}
-
-class DrawLogo extends StatelessWidget {
-  const DrawLogo({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      'assets/images/logo.svg',
-      clipBehavior: Clip.antiAlias,
-      color: const Color(0xFF000000),
-    );
   }
 }
 

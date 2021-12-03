@@ -1,22 +1,28 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:uc_here/constants.dart';
 import 'dart:ui';
 import 'package:url_strategy/url_strategy.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import 'pages/login_page.dart';
 import 'pages/qr_creator.dart';
 import 'pages/qr_scanner.dart';
 import 'pages/central_page.dart';
 import 'pages/validate_qr.dart';
 import 'pages/landing_page.dart';
+import 'pages/profile.dart';
 // TODO
+
 // Login
-// Ecrã central de stor
+
+// Ecrã central de stor (APENAS MUDAR BOTAO PARA GENERATE)
+// VERSAO WEB!
+
 // - About Us
+
 // - Menu Esquerda
 // - Menu central - AGENDA de aulas
+
 // Container - Calendário
 // Container - Lista de a fazer
 
@@ -40,15 +46,39 @@ class MyApp extends StatelessWidget {
             toolbarHeight: 55,
             shadowColor: Color(0xFF000000),
             foregroundColor: Color(0xFF000000)),
-
-        //TODO Criar opções para pessoa escolher
-        primarySwatch: Colors.red,
+        textTheme: TextTheme(
+          overline: GoogleFonts.roboto(
+            fontWeight: FontWeight.normal,
+            color: Colors.black,
+            fontSize: 12,
+            letterSpacing: 0,
+          ),
+          bodyText1: GoogleFonts.roboto(
+            fontWeight: FontWeight.normal,
+            color: Colors.black,
+            fontSize: 16,
+            letterSpacing: 0,
+          ),
+          caption: GoogleFonts.roboto(
+            fontWeight: FontWeight.normal,
+            color: Colors.black,
+            fontSize: 12,
+            letterSpacing: 0,
+          ),
+          headline4: GoogleFonts.robotoCondensed(
+            color: Colors.black,
+            wordSpacing: 1,
+            fontSize: 24,
+            letterSpacing: 0,
+          ),
+        ),
+        primaryColor: Colors.black,
         bottomAppBarColor: const Color(0xFFFFFFFF),
       ),
       initialRoute: '/',
       routes: {
         // When navigating to the "/" route, build the FirstScreen widget.
-        '/': (context) => const LandingPage(),
+        '/': (context) => const MainPage(),
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/login': (context) => const LoginPage(),
 
@@ -57,6 +87,8 @@ class MyApp extends StatelessWidget {
         '/generate': (context) => const TestPage(),
 
         '/validate': (context) => const ValidatePage(),
+
+        '/profile': (context) => MyProfile(),
       },
       debugShowCheckedModeBanner: false,
     );

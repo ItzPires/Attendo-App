@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uc_here/const/constants.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -13,8 +14,13 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Attendo"),
+        title: Transform.scale(
+          scale: 0.4,
+          child: const DrawLogo(),
+          alignment: Alignment.centerLeft,
         ),
+        centerTitle: false,
+      ),
       body: const Center(child: Text('Attendo app landing page')),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, '/scan'),
@@ -28,9 +34,17 @@ class _MainPageState extends State<MainPage> {
         child: Row(
           children: [
             const Spacer(flex: 1),
-            IconButton(icon: Icon(Icons.qr_code), onPressed: () {Navigator.pushNamed(context, '/generate');}),
+            IconButton(
+                icon: const Icon(Icons.qr_code),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/generate');
+                }),
             const Spacer(flex: 4),
-            IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
+            IconButton(
+                icon: const Icon(Icons.person_sharp),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/profile');
+                }),
             const Spacer(flex: 1),
           ],
         ),
