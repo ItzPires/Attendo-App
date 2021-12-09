@@ -10,6 +10,7 @@ import 'pages/qr_scanner.dart';
 import 'pages/central_page.dart';
 import 'pages/validate_qr.dart';
 import 'pages/landing_page.dart';
+import 'pages/about_us.dart';
 import 'pages/profile.dart';
 // TODO
 
@@ -81,6 +82,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => const MainPage(),
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/login': (context) => const LoginPage(),
+
+        '/aboutus': (context) => const AboutUsPage(),
 
         '/scan': (context) => const ScanPage(),
 
