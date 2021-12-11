@@ -77,18 +77,12 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
         '/': (context) => const MainPage(),
-        // When navigating to the "/second" route, build the SecondScreen widget.
         '/login': (context) => const LoginPage(),
-
         '/scan': (context) => const ScanPage(),
-
         '/generate': (context) => const TestPage(),
-
         '/validate': (context) => const ValidatePage(),
-
-        '/profile': (context) => MyProfile(),
+        '/profile': (context) => const MyProfile(),
       },
       debugShowCheckedModeBanner: false,
     );

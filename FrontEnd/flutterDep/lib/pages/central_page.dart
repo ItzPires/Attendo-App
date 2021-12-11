@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uc_here/const/constants.dart';
+import 'package:uc_here/pages/login_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -10,8 +11,11 @@ class MainPage extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _MainPageState extends State<MainPage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget? draw_first_time_page(BuildContext context) {
+    return null;
+  }
+
+  Widget mainPage(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Transform.scale(
@@ -37,7 +41,7 @@ class _MainPageState extends State<MainPage> {
             IconButton(
                 icon: const Icon(Icons.qr_code),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/generate');
+                  Navigator.pushNamed(context, '/login');
                 }),
             const Spacer(flex: 4),
             IconButton(
@@ -51,5 +55,13 @@ class _MainPageState extends State<MainPage> {
       ),
       extendBody: false,
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (logged_in == true)
+      return mainPage(context);
+    else
+      return LoginPage();
   }
 }

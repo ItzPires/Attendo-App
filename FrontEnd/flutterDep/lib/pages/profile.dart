@@ -3,9 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:uc_here/const/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-bool _isEditingText = false;
-String initialText = "Initial Text";
+import 'dart:convert' show utf8;
 
 //TODO REGISTO DE PRESENÇAS DO UTILIZADOR POR CADEIRA
 class MyProfile extends StatefulWidget {
@@ -18,12 +16,15 @@ class MyProfile extends StatefulWidget {
 class _MyProfileState extends State<MyProfile> {
   late Future<Student> _student;
   late TextEditingController _editingController;
+  bool _isEditingText = false;
+  late String initialText;
 
   @override
   void initState() {
+    _student = fetchStudent(2019222451);
+    getAboutMe(_student);
     _editingController = TextEditingController(text: initialText);
     super.initState();
-    _student = fetchStudent(2019222451);
   }
 
   @override
@@ -34,90 +35,73 @@ class _MyProfileState extends State<MyProfile> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Row(
-            children: [
-              Expanded(
-                flex: 3,
-                child: Transform.scale(
-                  alignment: Alignment.center,
-                  scale: 0.35,
-                  child: const DrawLogoQROnly(),
-                  origin: const Offset(25, 0),
+    return GestureDetector(
+      child: Scaffold(
+          appBar: AppBar(
+            title: Row(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: Transform.scale(
+                    alignment: Alignment.center,
+                    scale: 0.35,
+                    child: const DrawLogoQROnly(),
+                    origin: const Offset(25, 0),
+                  ),
                 ),
-              ),
-              const Expanded(
-                flex: 10,
-                child: Text(
-                  "Meu Perfil",
-                  textAlign: TextAlign.start,
+                const Expanded(
+                  flex: 10,
+                  child: Text(
+                    "Meu Perfil",
+                    textAlign: TextAlign.start,
+                  ),
+                )
+              ],
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+            ),
+            titleSpacing: 0,
+            centerTitle: false,
+            leadingWidth: 25,
+            leading: BackButton(
+              onPressed: () {
+                Navigator.pop(context);
+                print(initialText);
+              },
+            ),
+          ),
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  child: Center(
+                    child: templateImage(),
+                  ),
+                  padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
                 ),
-              )
-            ],
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-          ),
-          titleSpacing: 0,
-          centerTitle: false,
-          leadingWidth: 25,
-          leading: BackButton(
-            onPressed: () => Navigator.pop(context),
-          ),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                child: Center(
-                  child: templateImage(),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                  child: Center(child: getName(_student)),
                 ),
-                padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                child: Center(child: getName(_student)),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
-                child: drawInformation(context, _student, _editingController),
-              ),
-            ],
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-          ),
-        ));
-  }
-
-  Widget _editTitleTextField(context, _editingController) {
-    if (_isEditingText) {
-      return Center(
-        child: TextField(
-          onSubmitted: (newValue) {
-            setState(() {
-              initialText = newValue;
-              _isEditingText = false;
-            });
-          },
-          autofocus: true,
-          controller: _editingController,
-        ),
-      );
-    }
-    return InkWell(
-        onTap: () {
-          setState(() {
-            _isEditingText = true;
-          });
-        },
-        child: Text(
-          initialText,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 18.0,
-          ),
-        ));
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+                  child: drawInformation(context, _student, _editingController),
+                ),
+              ],
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+            ),
+          )),
+      onTap: () {
+        _isEditingText = false;
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        print(initialText);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+    );
   }
 
   Widget drawInformation(context, _student, _editingController) {
@@ -150,7 +134,7 @@ class _MyProfileState extends State<MyProfile> {
           padding: const EdgeInsets.fromLTRB(30, 40, 30, 0),
         ),
         Padding(
-          child: aboutMe(),
+          child: getAboutMe(_student),
           padding: const EdgeInsets.fromLTRB(30, 40, 30, 0),
         )
       ],
@@ -170,6 +154,11 @@ class _MyProfileState extends State<MyProfile> {
                   OutlineInputBorder(borderRadius: BorderRadius.circular(15.0)),
               icon: const Icon(Icons.person_search_outlined),
               labelStyle: Theme.of(context).textTheme.bodyText1),
+          onChanged: (newValue) {
+            setState(() {
+              initialText = newValue;
+            });
+          },
           onSubmitted: (newValue) {
             setState(() {
               initialText = newValue;
@@ -201,6 +190,28 @@ class _MyProfileState extends State<MyProfile> {
         ),
       ),
     );
+  }
+
+  FutureBuilder<Student> getAboutMe(student) {
+    initialText = "Error Loading Student Number";
+    return FutureBuilder<Student>(
+        future: student,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            print(snapshot.data!.about_me);
+            initialText =
+                (String.fromCharCodes(utf8.encode(snapshot.data!.about_me)));
+            return aboutMe();
+          } else if (snapshot.hasError) {
+            initialText = 'Error Loading Student Number';
+            return aboutMe();
+          }
+
+          // By default, show a loading spinner.
+          return const CircularProgressIndicator(
+            color: Color(0xFF000000),
+          );
+        });
   }
 }
 
@@ -276,8 +287,9 @@ FutureBuilder<Student> getNumber(student) {
 class Student {
   String name;
   String mail;
+  String about_me;
   int number;
-  Student(this.name, this.mail, this.number);
+  Student(this.name, this.mail, this.number, this.about_me);
 
   @override
   String toString() {
@@ -287,7 +299,8 @@ class Student {
   Student.fromJson(Map<String, dynamic> json)
       : name = json["name"],
         mail = json["mail"],
-        number = json["number"];
+        number = json["number"],
+        about_me = json["sobre_mim"];
 }
 
 Future<Student> fetchStudent(int number) async {
