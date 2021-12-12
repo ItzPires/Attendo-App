@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:math' as math;
-import 'package:uc_here/const/logo.dart';
+import 'package:uc_here/const/constants.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);

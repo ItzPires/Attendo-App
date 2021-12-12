@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uc_here/models/api_response.dart';
+import 'package:uc_here/models/user.dart';
 
 //TEST IN ANDROID STUDIO
 String apiURLTest = "http://10.0.2.2:8000/";
-String? authToken;
-bool? is_teacher;
-int? my_id;
-bool logged_in = false;
+User? me;
 
 class DrawLogo extends StatelessWidget {
   const DrawLogo({Key? key}) : super(key: key);

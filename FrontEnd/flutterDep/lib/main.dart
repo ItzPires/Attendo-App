@@ -1,16 +1,22 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:uc_here/pages/init_page.dart';
+import 'package:uc_here/pages/landing.dart';
 import 'dart:ui';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'pages/login_page.dart';
 import 'pages/qr_creator.dart';
 import 'pages/qr_scanner.dart';
 import 'pages/central_page.dart';
 import 'pages/validate_qr.dart';
 import 'pages/landing_page.dart';
+import 'pages/about_us.dart';
 import 'pages/profile.dart';
+import 'const/constants.dart';
 // TODO
 
 // Login
@@ -28,13 +34,24 @@ import 'pages/profile.dart';
 
 void main() async {
   setPathUrlStrategy();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Future<String>? loggedInString;
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -77,12 +94,15 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const MainPage(),
+        '/': (context) => Landing(),
+        '/home': (context) => const MainPage(),
+        '/init': (context) => const InitPage(),
         '/login': (context) => const LoginPage(),
         '/scan': (context) => const ScanPage(),
         '/generate': (context) => const TestPage(),
         '/validate': (context) => const ValidatePage(),
         '/profile': (context) => const MyProfile(),
+        '/about_us': (context) => const AboutUsPage(),
       },
       debugShowCheckedModeBanner: false,
     );

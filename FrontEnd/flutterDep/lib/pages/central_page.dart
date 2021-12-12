@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uc_here/const/constants.dart';
-import 'package:uc_here/pages/login_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -11,11 +11,18 @@ class MainPage extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _MainPageState extends State<MainPage> {
-  Widget? draw_first_time_page(BuildContext context) {
-    return null;
+  //TO USE
+  void _handleLogout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('userMail');
+    prefs.remove('userPassword');
+    Navigator.pushNamedAndRemoveUntil(
+        context, '/login', ModalRoute.withName('/login'));
   }
 
-  Widget mainPage(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
+    //Main Page
     return Scaffold(
       appBar: AppBar(
         title: Transform.scale(
@@ -41,7 +48,7 @@ class _MainPageState extends State<MainPage> {
             IconButton(
                 icon: const Icon(Icons.qr_code),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/login');
+                  Navigator.pushNamed(context, "/about_us");
                 }),
             const Spacer(flex: 4),
             IconButton(
@@ -55,13 +62,5 @@ class _MainPageState extends State<MainPage> {
       ),
       extendBody: false,
     );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (logged_in == true)
-      return mainPage(context);
-    else
-      return LoginPage();
   }
 }
