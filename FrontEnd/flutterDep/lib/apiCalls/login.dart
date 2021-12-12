@@ -28,11 +28,11 @@ Future<ApiResponse> authenticateUser(String email, String password) async {
         }
         break;
       default:
-        _apiResponse.ApiError = json.decode(response.body)['error'];
+        _apiResponse.ApiError = "Erro de ligação ao servidor";
         break;
     }
   } on SocketException {
-    _apiResponse.ApiError = "Server error. Please retry";
+    _apiResponse.ApiError = "Erro de ligação ao servidor";
   }
   return _apiResponse;
 }

@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               const Padding(
-                padding: EdgeInsets.only(top: 80.0),
+                padding: EdgeInsets.only(top: 30.0),
                 child: Center(
                   child: SizedBox(width: 200, height: 150, child: DrawLogo()),
                 ),
