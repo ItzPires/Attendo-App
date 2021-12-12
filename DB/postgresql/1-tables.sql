@@ -4,6 +4,7 @@ CREATE TABLE aluno (
 	mail	 			VARCHAR(512),
 	password	 		VARCHAR(512) NOT NULL,
 	nome	 			VARCHAR(512) NOT NULL,
+	sobre_mim	 		VARCHAR(512),
 	login_time 			TIMESTAMP,
 	logged_in	 		BOOL NOT NULL DEFAULT False,
 	PRIMARY KEY(id)
@@ -22,9 +23,10 @@ CREATE TABLE cadeira (
 
 CREATE TABLE professor (
 	id 					SERIAL,
-	mail	 			VARCHAR(512) UNIQUE,
+	mail	 			VARCHAR(512) NOT NULL UNIQUE,
 	password	 		VARCHAR(512) NOT NULL,
 	nome	 			VARCHAR(512) NOT NULL,
+	sobre_mim	 		VARCHAR(512),
 	login_time 			TIMESTAMP,
 	logged_in	 		BOOL NOT NULL DEFAULT False,
 	PRIMARY KEY(id)

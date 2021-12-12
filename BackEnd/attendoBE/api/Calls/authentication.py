@@ -7,36 +7,60 @@ import json, os, jwt
 import datetime
 
 
-class Authentication:
-    @api_view(http_method_names=["GET"])
-    def user_login(request):
-        login_user = json.loads(request.body)
 
-        
+class Authentication():
+    @api_view(http_method_names=["POST"])
+    def user_login(request):
+        if(request.method == "POST"):
+                login_user = json.loads(request.body)
+            
+        email = login_user['email']
+        password = login_user['password']
         with connection.cursor() as cursor:
             try:
-                ###SELECT BY MAIL/ENCRYPTED PASSWORD
-                statement = """"""
-                values = """"""
-                cursor.execute(statement, values)
-                id = cursor.fetchone()[0]
-                if(id is not None):
-                    id = {'user_id': id, "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}
-                    result = jwt.encode(id,os.getenv(JWT_KEY), algorithm="HS256")
-                    result = {'authToken': result}
-                else:
-                    result = {'erro:':"User was not found, invalid username or password"}
-
+                is_teacher = False
+                try:
+                    cursor.execute("""BEGIN TRANSACTION""")
+                    statement = """SELECT mail, id, sobre_mim, nome, numero FROM aluno where mail = %s AND password is NOT NULL 
+                AND password = crypt(%s , password) FOR UPDATE"""
+                    values = (email, password)
+                    print(values)
+                    cursor.execute(statement, values)
+                    (mail, id, sobre_mim, nome, numero) = cursor.fetchone()
+                    if(id is not None):
+                        cursor.execute("""UPDATE aluno set logged_in = TRUE where id = %s""",(id,))
+                        cursor.execute("""COMMIT""")
+                        token = {'user_id': id, "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}
+                        result = jwt.encode(token,"adsadadasdfadgdgafdgdfsgfdgdfgsdfgfsdg", algorithm="HS256")
+                        result = {'authToken': result, 'isTeacher':is_teacher, 'number':numero, 'mail':mail, 'aboutMe':sobre_mim, 'name':nome}
+                except:
+                    is_teacher = True
+                    statement = """SELECT mail, id, sobre_mim, nome FROM professor where mail = %s AND password is NOT NULL 
+                AND password = crypt(%s , password) FOR UPDATE"""
+                    values = (email, password)
+                    cursor.execute(statement, values)
+                    
+                    (mail, id, sobre_mim, nome) = cursor.fetchone()
+                    print(mail)
+                    if(id is not None):
+                        cursor.execute("""UPDATE professor set logged_in = TRUE where id = %s""",(id, ))
+                        cursor.execute("""COMMIT""")
+                        token = {'user_id': id, "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}
+                        result = jwt.encode(token,"adsadadasdfadgdgafdgdfsgfdgdfgsdfgfsdg", algorithm="HS256")
+                        result = {'authToken': result, 'isTeacher':is_teacher, 'number':id, 'mail':mail, 'aboutMe':sobre_mim, 'name':nome}
+                    else:
+                        result = {'error':"Utilizador ou password incorretos"}
+                        cursor.execute("""ROLLBACK""")
+            
             except (Exception, DatabaseError) as error:
-                result = {'erro:': str(error)}
+                result = {'error': "Utilizador ou password incorretos"}
+                cursor.execute("""ROLLBACK""")
 
         return JsonResponse(result)
     
     def authenticate(token):
-
-
         try:
-            id = jwt.decode(token, os.getenv(), algorithms=["HS256"])
+            id = jwt.decode(token, "adsadadasdfadgdgafdgdfsgfdgdfgsdfgfsdg", algorithms=["HS256"])
             return True
         except jwt.ExpiredSignatureError:
             msg = 'Signature has expired.'

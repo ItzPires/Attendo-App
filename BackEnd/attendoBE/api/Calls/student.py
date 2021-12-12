@@ -17,11 +17,11 @@ class StudentViews():
             #Get all Students
             if(request.method == "GET"):
     
-                cursor.execute("""SELECT numero, mail, nome FROM ALUNO""")
+                cursor.execute("""SELECT numero, mail, nome,sobre_mim FROM ALUNO""")
                 data = cursor.fetchall()
                 response = []
                 for user in data:
-                    to_add = {"numero":user[0], "mail":user[1], "nome":user[2]}
+                    to_add = {"numero":user[0], "mail":user[1], "nome":user[2], "sobre_mim": user[3]}
                     response.append(to_add)
                 return Response(response)
             
@@ -43,9 +43,10 @@ class StudentViews():
         with connection.cursor() as cursor:
             #Get student with this number
             if(request.method == "GET"):
-                cursor.execute("""SELECT * FROM ALUNO WHERE numero = %s""", (number, ))
-                data = cursor.fetchall()
-                return Response(data)
+                cursor.execute("""SELECT numero, mail, nome, sobre_mim FROM ALUNO WHERE numero = %s""", (number, ))
+                user = cursor.fetchone()
+                to_add = {"number":user[0], "mail":user[1], "name":user[2], "sobre_mim":user[3]}
+                return Response(to_add)
             
             #Update a student with given number
             if(request.method == "PATCH"):

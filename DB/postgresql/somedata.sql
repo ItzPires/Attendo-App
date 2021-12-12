@@ -1,22 +1,23 @@
 -- INSERT some students
-INSERT INTO aluno(numero, mail, password, nome)
-VALUES ('2019217793', 'uc2019217793@student.uc.pt', '12345', 'Pedro Henriques');
-INSERT INTO aluno(numero, mail, password, nome)
-VALUES ('2019218086', 'uc2019218086@student.uc.pt', '12345', 'Adriana Bernardo');
-INSERT INTO aluno(numero, mail, password, nome)
-VALUES ('2019222451', 'uc2019222451@student.uc.pt', '12345', 'Fábio Vaqueiro');
-INSERT INTO aluno(numero, mail, password, nome)
-VALUES ('2019220273', 'uc2019220273@student.uc.pt', '12345', 'João Fernandes');
-INSERT INTO aluno(numero, mail, password, nome)
-VALUES ('2019225195', 'uc2019225195@student.uc.pt', '12345', 'Samuel Tiago');
-INSERT INTO aluno(numero, mail, password, nome)
-VALUES ('2019217420', 'uc2019217420@student.uc.pt', '12345', 'Pedro Mendes');
-INSERT INTO aluno(numero, mail, password, nome)
-VALUES ('2019223988', 'uc2019223988@student.uc.pt', '12345', 'Pedro Chaves');
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+INSERT INTO aluno(numero, mail, password, nome, sobre_mim)
+VALUES ('2019217793', 'uc2019217793@student.uc.pt', crypt('12345', gen_salt('md5')), 'Pedro Henriques', 'Sou bué fixe ya');
+INSERT INTO aluno(numero, mail, password, nome, sobre_mim)
+VALUES ('2019218086', 'uc2019218086@student.uc.pt', crypt('12345', gen_salt('md5')), 'Adriana Bernardo', 'Sou bué monga');
+INSERT INTO aluno(numero, mail, password, nome, sobre_mim)
+VALUES ('2019222451', 'uc2019222451@student.uc.pt', crypt('12345', gen_salt('md5')), 'Fábio Vaqueiro', 'A tua carteira onde tá?');
+INSERT INTO aluno(numero, mail, password, nome, sobre_mim)
+VALUES ('2019220273', 'uc2019220273@student.uc.pt', crypt('12345', gen_salt('md5')), 'João Fernandes', 'Pomba\n#ABS\n#Pombal');
+INSERT INTO aluno(numero, mail, password, nome, sobre_mim)
+VALUES ('2019225195', 'uc2019225195@student.uc.pt', crypt('12345', gen_salt('md5')), 'Samuel Tiago', 'Samuel aqui');
+INSERT INTO aluno(numero, mail, password, nome, sobre_mim)
+VALUES ('2019217420', 'uc2019217420@student.uc.pt', crypt('12345', gen_salt('md5')), 'Pedro Mendes', 'adsadadsasd');
+INSERT INTO aluno(numero, mail, password, nome, sobre_mim)
+VALUES ('2019223988', 'uc2019223988@student.uc.pt', crypt('12345', gen_salt('md5')), 'Pedro Chaves', 'asdasda');
 
 -- Teacher
-INSERT INTO professor(mail, password, nome)
-VALUES ('mlcorreia@dei.uc.pt', '12345', 'Clara Luxo');
+INSERT INTO professor(mail, password, nome, sobre_mim)
+VALUES ('mlcorreia@dei.uc.pt', crypt('12345', gen_salt('md5')), 'Clara Luxo', 'Prof PGI');
 
 -- Cadeira
 INSERT INTO cadeira(nome, ano, departamento, curso, universidade, professor_id)

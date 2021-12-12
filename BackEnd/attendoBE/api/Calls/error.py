@@ -1,2 +1,2 @@
 def error(message):
-    return {"Error":message}
+    return {"error":message}
