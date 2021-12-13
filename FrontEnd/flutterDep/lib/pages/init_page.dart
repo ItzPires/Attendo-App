@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:introduction_screen/introduction_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uc_here/const/constants.dart';
 
@@ -11,30 +13,52 @@ class InitPage extends StatefulWidget {
 
 class _InitPageState extends State<InitPage> {
   @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-        onWillPop: () async => false,
-        child: Scaffold(
-          appBar: AppBar(
-            leadingWidth: 0,
-            title: Transform.scale(
-              scale: 0.4,
-              child: const DrawLogo(),
-              alignment: Alignment.centerLeft,
+  Widget build(BuildContext context) => SafeArea(
+        child: IntroductionScreen(
+          pages: [
+            PageViewModel(
+              title: "Titulo Teste 1",
+              body: "Rumo ao 20",
+              image: Center(
+                  child: SvgPicture.asset(
+                'assets/images/education.svg',
+                clipBehavior: Clip.antiAlias,
+                color: const Color(0xFF000000),
+              )),
             ),
-            centerTitle: false,
-          ),
-          //TODO DRAW FIRST TIME SCREEN
-          body: ElevatedButton(
-            child: const Text("FIRST TIME"),
-            onPressed: () => setState(() {
-              saveInitState();
-              Navigator.pushNamedAndRemoveUntil(
-                  context, '/login', ModalRoute.withName('/login'));
-            }),
-          ),
-        ));
-  }
+            PageViewModel(
+              title: "Titulo Teste 2",
+              body: "Attendo Lets Go",
+              image: Center(
+                  child: SvgPicture.asset(
+                'assets/images/schoolBell.svg',
+                clipBehavior: Clip.antiAlias,
+                color: const Color(0xFF000000),
+              )),
+            ),
+            PageViewModel(
+              title: "Titulo Teste 3",
+              body: "Attendo Lets Go",
+              image: Center(
+                  child: SvgPicture.asset(
+                'assets/images/logo.svg',
+                clipBehavior: Clip.antiAlias,
+                color: const Color(0xFF000000),
+              )),
+            )
+          ],
+          onDone: () {
+            saveInitState();
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/login', ModalRoute.withName('/login'));
+          },
+          next: const Text('Proximo'),
+          showSkipButton: true,
+          skip: const Text("Skip"),
+          done: const Text("Comecar a Utilizar",
+              style: TextStyle(fontWeight: FontWeight.w600)),
+        ),
+      );
 }
 
 void saveInitState() async {
