@@ -37,14 +37,19 @@ class _InitPageState extends State<InitPage> {
               )),
             ),
             PageViewModel(
+              bodyWidget: Column(children: [
+                const Text("Atendo Lets go"),
+                ElevatedButton(
+                  child: const Text("Entrar"),
+                  onPressed: () {
+                    saveInitState();
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/login', ModalRoute.withName('/login'));
+                  },
+                ),
+              ]),
               title: "Titulo Teste 3",
-              body: "Attendo Lets Go",
-              image: Center(
-                  child: SvgPicture.asset(
-                'assets/images/logo.svg',
-                clipBehavior: Clip.antiAlias,
-                color: const Color(0xFF000000),
-              )),
+              image: Center(child: DrawLogo()),
             )
           ],
           onDone: () {

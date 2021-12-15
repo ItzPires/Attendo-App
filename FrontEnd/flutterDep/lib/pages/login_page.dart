@@ -132,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
   void _handleSubmitted() async {
     final FormState? form = _formKey.currentState;
     if (!form!.validate()) {
-      showInSnackBar('Please fix the errors in red before submitting.');
+      showInSnackBar('Verificar erros de input');
     } else {
       form.save();
       _apiResponse = await authenticateUser(email, password);

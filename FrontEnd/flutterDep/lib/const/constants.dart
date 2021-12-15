@@ -4,7 +4,7 @@ import 'package:uc_here/models/api_response.dart';
 import 'package:uc_here/models/user.dart';
 
 //TEST IN ANDROID STUDIO
-String apiURLTest = "http://10.0.2.2:8000/";
+String apiURLTest = "http://10.3.3.109/";
 User? me;
 
 class DrawLogo extends StatelessWidget {
