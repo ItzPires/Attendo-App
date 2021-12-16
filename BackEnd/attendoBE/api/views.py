@@ -10,7 +10,5 @@ from django.db import connection, DatabaseError
 
 
 
-
-
 def index(render):
-    return JsonResponse({"Our name":'<h1>We are ATTENDO</h1>'})
+    return Response('<h1>We are ATTENDO</h1>')
