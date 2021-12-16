@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               const Padding(
-                padding: EdgeInsets.only(top: 80.0),
+                padding: EdgeInsets.only(top: 30.0),
                 child: Center(
                   child: SizedBox(width: 200, height: 150, child: DrawLogo()),
                 ),
@@ -132,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
   void _handleSubmitted() async {
     final FormState? form = _formKey.currentState;
     if (!form!.validate()) {
-      showInSnackBar('Please fix the errors in red before submitting.');
+      showInSnackBar('Verificar erros de input');
     } else {
       form.save();
       _apiResponse = await authenticateUser(email, password);

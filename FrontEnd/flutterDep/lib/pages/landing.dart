@@ -31,7 +31,7 @@ class _LandingState extends State<Landing> {
     _init = (prefs.getString('init') ?? "");
     if (connectivityResult == ConnectivityResult.none) {
       Navigator.pushNamedAndRemoveUntil(
-          context, '/home', ModalRoute.withName('/home'));
+          context, '/login', ModalRoute.withName('/login'));
     } else {
       if (_init == "") {
         Navigator.pushNamedAndRemoveUntil(
