@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'dart:math';
 
@@ -25,12 +26,17 @@ class _QRCodeGenState extends State<QRCodeGen> {
   Future<void> takePicture() async {
     RenderRepaintBoundary boundary =
         genKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
-    ui.Image image = await boundary.toImage();
+    ui.Image image = await boundary.toImage(pixelRatio: 10);
+    if (Platform.isAndroid) {
+      Map<Permission, PermissionStatus> statuses = await [
+        Permission.manageExternalStorage
+      ].request(); //Permission.manageExternalStorage
+    }
     final directory = (await getApplicationDocumentsDirectory()).path;
     print(directory);
     ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
     Uint8List pngBytes = byteData!.buffer.asUint8List();
-    File imgFile = File('sdcard/DCIM/photo.png');
+    File imgFile = await File('$directory/photo.png').create(recursive: true);
     imgFile.writeAsBytes(pngBytes);
     print(pngBytes);
   }
