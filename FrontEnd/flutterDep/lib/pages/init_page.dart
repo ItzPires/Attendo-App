@@ -23,7 +23,7 @@ class _InitPageState extends State<InitPage> {
                   child: SvgPicture.asset(
                 'assets/images/education.svg',
                 clipBehavior: Clip.antiAlias,
-                color: const Color(0xFF000000),
+                color: Theme.of(context).colorScheme.onSurface,
               )),
             ),
             PageViewModel(
@@ -33,7 +33,7 @@ class _InitPageState extends State<InitPage> {
                   child: SvgPicture.asset(
                 'assets/images/schoolBell.svg',
                 clipBehavior: Clip.antiAlias,
-                color: const Color(0xFF000000),
+                color: Theme.of(context).colorScheme.onSurface,
               )),
             ),
             PageViewModel(

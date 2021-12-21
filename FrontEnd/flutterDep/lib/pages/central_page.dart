@@ -32,6 +32,15 @@ class _MainPageState extends State<MainPage> {
         ),
         centerTitle: false,
       ),
+      drawer: Drawer(
+          child: Column(
+        children: const [
+          DrawerHeader(
+            decoration: BoxDecoration(),
+            child: Text('Drawer Header'),
+          ),
+        ],
+      )),
       body: const Center(child: Text('Attendo app landing page')),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, '/scan'),
@@ -48,7 +57,8 @@ class _MainPageState extends State<MainPage> {
             IconButton(
                 icon: const Icon(Icons.qr_code),
                 onPressed: () {
-                  Navigator.pushNamed(context, "/about_us");
+                  //_handleLogout();
+                  Navigator.pushNamed(context, "/generate");
                 }),
             const Spacer(flex: 4),
             IconButton(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uc_here/apiCalls/login.dart';
+import 'package:uc_here/const/constants.dart';
 import 'package:uc_here/models/api_response.dart';
 import 'package:uc_here/models/user.dart';
 import 'package:connectivity/connectivity.dart';
@@ -40,7 +41,7 @@ class _LandingState extends State<Landing> {
         Navigator.pushNamedAndRemoveUntil(
             context, '/login', ModalRoute.withName('/login'));
       } else {
-        ApiResponse _apiResponse =
+        ApiResponseLogin _apiResponse =
             await authenticateUser(_userEmail, _userPassword);
 
         if ((_apiResponse.ApiError) == "") {
@@ -57,6 +58,17 @@ class _LandingState extends State<Landing> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    return Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+        ),
+        backgroundColor: Colors.white,
+        body: Center(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+              DrawLogo(),
+              CircularProgressIndicator(),
+            ])));
   }
 }
