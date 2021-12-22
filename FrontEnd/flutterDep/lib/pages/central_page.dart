@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uc_here/const/constants.dart';
+
 import 'package:uc_here/pages/profile.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 class MainPage extends StatefulWidget {
@@ -52,7 +54,20 @@ class _MainScreenState extends State<MainScreen> {
           ),
           centerTitle: false,
         ),
-        body: const Center(child: Text('Attendo app landing page')),
+         body: ListView(
+        padding: const EdgeInsets.all(8),
+        children: <Widget>[
+          Container(
+              height: 100,
+              color: Colors.amber[600],
+              child: const LectureText()),
+          Container(
+            height: 500,
+            color: Colors.amber[500],
+            child: const Center(child: LectureText()),
+          ),
+        ],
+      ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, '/scan'),
           tooltip: 'Scan Class QR Code',
@@ -112,6 +127,7 @@ class _MenuPageState extends State<MenuPage> {
     String firstName = names.first;
     String lastName = names.last;
     return Scaffold(
+
         body: Container(
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
@@ -253,5 +269,32 @@ class _MenuPageState extends State<MenuPage> {
           await Future.delayed(const Duration(milliseconds: 250));
           Navigator.pushNamed(context, outpage);
         });
+  }
+}
+
+class LectureText extends StatelessWidget {
+  const LectureText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final TextStyle _initLecture = GoogleFonts.rye(
+      textStyle: const TextStyle(
+          fontWeight: FontWeight.normal, color: Colors.black, fontSize: 80),
+    );
+
+    final TextStyle _lectureText = GoogleFonts.abel(
+      textStyle: const TextStyle(
+          fontWeight: FontWeight.normal, color: Colors.black, fontSize: 21),
+    );
+
+    return RichText(
+        textAlign: TextAlign.left,
+        overflow: TextOverflow.clip,
+        text: TextSpan(children: [
+          TextSpan(text: " A", style: _initLecture),
+          TextSpan(
+              text: "Cadeira: \nHora | Sala\nPresença: (Por marcar/marcada)\n",
+              style: _lectureText)
+        ]));
   }
 }
