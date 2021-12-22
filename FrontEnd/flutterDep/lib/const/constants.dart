@@ -28,7 +28,7 @@ class DrawLogoQROnly extends StatelessWidget {
     return SvgPicture.asset(
       'assets/images/QR_white.svg',
       color: Theme.of(context).colorScheme.onSurface,
-      fit: BoxFit.fill,
+      fit: BoxFit.scaleDown,
       width: 80,
       height: 80,
       semanticsLabel: "App Logo: Attendo QR code",

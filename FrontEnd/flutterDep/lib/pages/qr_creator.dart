@@ -20,67 +20,89 @@ class QRCodeGen extends StatefulWidget {
 }
 
 class _QRCodeGenState extends State<QRCodeGen> {
-  Future<String> qrCodeFetch = getQrCode(1.toString());
   GlobalKey genKey = GlobalKey();
 
   Future<void> takePicture() async {
     RenderRepaintBoundary boundary =
         genKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
     ui.Image image = await boundary.toImage(pixelRatio: 10);
-    if (Platform.isAndroid) {
-      Map<Permission, PermissionStatus> statuses = await [
-        Permission.manageExternalStorage
-      ].request(); //Permission.manageExternalStorage
-    }
+
     final directory = (await getApplicationDocumentsDirectory()).path;
     print(directory);
     ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
     Uint8List pngBytes = byteData!.buffer.asUint8List();
-    File imgFile = await File('$directory/photo.png').create(recursive: true);
-    imgFile.writeAsBytes(pngBytes);
+    if (Platform.isAndroid) {
+      Directory generalDownloadDir = Directory(
+          '/storage/emulated/0/Download'); //! THIS WORKS for android only !!!!!!
+
+      //qr image file saved to general downloads folder
+      File qrJpg = await File('${generalDownloadDir.path}/12345.jpg').create();
+      await qrJpg.writeAsBytes(pngBytes);
+    } else {
+      File imgFile = File(directory + '/photo.png');
+      await imgFile.writeAsBytes(pngBytes);
+    }
+
     print(pngBytes);
   }
 
   @override
   Widget build(BuildContext context) {
+    var class_id = ModalRoute.of(context)!.settings.arguments;
+    Future<String> qrCodeFetch = getQrCode(class_id.toString());
+
     return Scaffold(
         appBar: AppBar(),
         body: FutureBuilder(
           future: qrCodeFetch,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
-              return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Center(
-                        child: RepaintBoundary(
-                            key: genKey,
-                            child: Container(
-                                width: 250.0,
-                                height: 250.0,
-                                decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8.0)),
-                                  color: Colors.white,
-                                ),
-                                child: QrImage(
-                                  data: snapshot.data!,
-                                  version: QrVersions.auto,
-                                  eyeStyle: const QrEyeStyle(
-                                    eyeShape: QrEyeShape.square,
+              if (snapshot.data != "error") {
+                return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                          child: RepaintBoundary(
+                              key: genKey,
+                              child: Container(
+                                  width: 250.0,
+                                  height: 250.0,
+                                  decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8.0)),
+                                    color: Colors.white,
                                   ),
-                                  dataModuleStyle: const QrDataModuleStyle(
-                                    dataModuleShape: QrDataModuleShape.circle,
-                                  ),
-                                  padding: const EdgeInsets.all(20),
-                                  foregroundColor: Colors.black,
-                                )))),
-                    ElevatedButton(
-                        onPressed: () async {
-                          await takePicture();
-                        },
-                        child: Text("Exportar"))
-                  ]);
+                                  child: QrImage(
+                                    data: snapshot.data!,
+                                    version: QrVersions.auto,
+                                    eyeStyle: const QrEyeStyle(
+                                      eyeShape: QrEyeShape.square,
+                                    ),
+                                    dataModuleStyle: const QrDataModuleStyle(
+                                      dataModuleShape: QrDataModuleShape.circle,
+                                    ),
+                                    padding: const EdgeInsets.all(20),
+                                    foregroundColor: Colors.black,
+                                  )))),
+                      ElevatedButton(
+                          onPressed: () async {
+                            await takePicture();
+                          },
+                          child: Text("Exportar"))
+                    ]);
+              } else {
+                return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Center(
+                          child: Text("Erro a gerar QR code, tente novamente")),
+                      ElevatedButton(
+                          onPressed: () async {
+                            Navigator.pop(context);
+                          },
+                          child: Text("Voltar"))
+                    ]);
+              }
             }
             return const Center(child: CircularProgressIndicator());
           },

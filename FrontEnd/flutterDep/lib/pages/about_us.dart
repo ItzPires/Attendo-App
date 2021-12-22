@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uc_here/const/constants.dart';
 
+import 'package:uc_here/pages/landing_page.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 class AboutUsPage extends StatefulWidget {
   const AboutUsPage({Key? key}) : super(key: key);
 
@@ -15,25 +18,50 @@ class _AboutUsPageState extends State<AboutUsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Transform.scale(
-          scale: 0.4,
-          child: const DrawLogo(),
-          alignment: Alignment.centerLeft,
+        title: Row(
+          children: [
+            Expanded(
+              flex: 3,
+              child: Transform.scale(
+                alignment: Alignment.center,
+                scale: 0.35,
+                child: const DrawLogoQROnly(),
+                origin: const Offset(25, 0),
+              ),
+            ),
+            const Expanded(
+              flex: 10,
+              child: Text(
+                "Sobre nós",
+                textAlign: TextAlign.start,
+              ),
+            )
+          ],
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
         ),
+        titleSpacing: 0,
         centerTitle: false,
+        leadingWidth: 25,
+        leading: BackButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
-      backgroundColor: Colors.white,
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         notchMargin: 2,
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.max,
           children: [
-            const Spacer(flex: 1),
             IconButton(
                 icon: SvgPicture.asset(
                   'assets/images/insta.svg',
                   clipBehavior: Clip.antiAlias,
-                  color: const Color(0xFF000000),
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
                 onPressed: () async {
                   const url = 'https://www.instagram.com/attendo.app/';
@@ -44,13 +72,14 @@ class _AboutUsPageState extends State<AboutUsPage> {
                     throw 'Could not launch $url';
                   }
                 }),
-            const Spacer(flex: 1),
             IconButton(
-                icon: SvgPicture.asset(
-                  'assets/images/facebook.svg',
-                  clipBehavior: Clip.antiAlias,
-                  color: const Color(0xFF000000),
-                ),
+                icon: Transform.scale(
+                    scale: 1.3,
+                    child: SvgPicture.asset(
+                      'assets/images/facebook.svg',
+                      clipBehavior: Clip.antiAlias,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    )),
                 onPressed: () async {
                   const url = 'https://www.facebook.com/Attendo.App.UC';
 
@@ -60,247 +89,108 @@ class _AboutUsPageState extends State<AboutUsPage> {
                     throw 'Could not launch $url';
                   }
                 }),
-            const Spacer(flex: 1),
           ],
         ),
       ),
       body: ListView(
-        padding: const EdgeInsets.all(20),
         children: <Widget>[
-          Center(
+          const Center(
             child: SizedBox(
-              width: 200,
-              height: 200,
-              child: SvgPicture.asset(
-                'assets/images/logo.svg',
-                clipBehavior: Clip.antiAlias,
-                color: const Color(0xFF000000),
-              ),
+              width: 210,
+              height: 120,
+              child: DrawLogo(),
             ),
           ),
-          Title(
-            color: Colors.black,
-            child: const Text(
-              "Sobre Nós",
-              style: TextStyle(fontSize: 48),
+          Padding(
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+              child: Text(
+                "Attendo é uma aplicação desenvolvida por um grupo de estudantes do 3ºano de Engenharia Informática da Universidade de Coimbra no âmbito da cadeira de Processos de Gestão e de Inovação.",
+                style: Theme.of(context).textTheme.bodyText1,
+                textAlign: TextAlign.center,
+                softWrap: true,
+              )),
+          Padding(
+              padding: EdgeInsets.fromLTRB(0, 40, 0, 10),
+              child: SizedBox(width: 210, height: 120, child: AnimatedText())),
+          Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+              child: Text(
+                "Arrasta para conheceres cada um de nós:",
+                style: Theme.of(context).textTheme.headline4,
+                textAlign: TextAlign.center,
+              )),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+            child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    DrawPerson("Adriana Bernardo", "Adriana",
+                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
+                    DrawPerson("Pedro Duarte", "Duarte",
+                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
+                    DrawPerson("Fábio Vaqueiro", "fabio",
+                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
+                    DrawPerson("Pedro Mendes", "mendes",
+                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
+                    DrawPerson("Samuel Pires", "sam",
+                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
+                    DrawPerson("Pedro Chaves", "Chaves",
+                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
+                    DrawPerson("João Fernandes", "joao",
+                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
+                  ],
+                )),
+          ),
+          Divider(
+            color: Theme.of(context).colorScheme.onSurface,
+            thickness: 1.1,
+            indent: MediaQuery.of(context).size.width * 0.05,
+            endIndent: MediaQuery.of(context).size.width * 0.05,
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+                MediaQuery.of(context).size.width * 0.09,
+                20,
+                MediaQuery.of(context).size.width * 0.09,
+                5),
+            child: Text(
+              "Aviso legal: os conteúdos constantes desta aplicação foram realizados por alunos no âmbito de uma disciplina– Processos de Gestão e Inovação - do 3º ano da licenciatura de Engenharia Informática da Faculdade de Ciências e Tecnologia da Universidade de Coimbra (FCTUC), pelo que a FCTUC não se responsabiliza pelo seu conteúdo.",
+              style: Theme.of(context).textTheme.caption,
               textAlign: TextAlign.center,
             ),
-          ),
-          const Text(
-            "Attendo é uma aplicação desenvolvida por um grupo de estudantes do 3ºano de Engenharia Informática da Universidade de Coimbra no âmbito da cadeira de Processos de Gestão e de Inovação.",
-            style: TextStyle(fontSize: 16),
-          ),
-          Container(
-            height: 20,
-          ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget DrawPerson(String name, String photo, String description) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.05, 0,
+          MediaQuery.of(context).size.width * 0.05, 0),
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        children: [
           Title(
             color: Colors.black,
-            child: const Text(
-              "Qual o Objectivo?",
-              style: TextStyle(fontSize: 28),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const Text(
-            "Simplificar a marcação de presenças nas aulas através da utilização de um QR CODE",
-            style: TextStyle(fontSize: 16),
-          ),
-          Container(
-            height: 20,
-          ),
-          Title(
-            color: Colors.black,
-            child: const Text(
-              "Qual o Modo de Funcionamento?",
-              style: TextStyle(fontSize: 28),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const Text(
-            "O Professor gera um QR COde através do site e na aula partilha-o com os alunos.",
-            style: TextStyle(fontSize: 16),
-          ),
-          Container(
-            height: 20,
-          ),
-          const Text(
-            "Os Alunos lêem o QR CODE com a aplicação, ficando, assim, marcada a sua presença.",
-            style: TextStyle(fontSize: 16),
-          ),
-          Container(
-            height: 35,
-          ),
-          Title(
-            color: Colors.black,
-            child: const Text(
-              "Quem Somos Nós?",
-              style: TextStyle(fontSize: 48),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Container(
-            height: 35,
-          ),
-          Title(
-            color: Colors.black,
-            child: const Text(
-              "Pedro Chaves",
+            child: Text(
+              name,
               style: TextStyle(fontSize: 20),
               textAlign: TextAlign.center,
             ),
           ),
-          const CircleAvatar(
+          CircleAvatar(
             backgroundColor: Colors.black,
             radius: 100,
             child: CircleAvatar(
               radius: 95,
-              backgroundImage: AssetImage('assets/images/chaves.jpeg'),
+              backgroundImage: AssetImage('assets/Membros/$photo.png'),
             ),
           ),
-          const Text(
-            "O Professor gera um QR COde através do site e na aula partilha-o com os alunos.",
+          Text(
+            description,
             style: TextStyle(fontSize: 16),
-          ),
-          Container(
-            height: 35,
-          ),
-          Title(
-            color: Colors.black,
-            child: const Text(
-              "Pedro Duarte",
-              style: TextStyle(fontSize: 20),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const CircleAvatar(
-            backgroundColor: Colors.black,
-            radius: 100,
-            child: CircleAvatar(
-              radius: 95,
-              backgroundImage: AssetImage('assets/images/chaves.jpeg'),
-            ),
-          ),
-          const Text(
-            "O Professor gera um QR COde através do site e na aula partilha-o com os alunos.",
-            style: TextStyle(fontSize: 16),
-          ),
-          Container(
-            height: 35,
-          ),
-          Title(
-            color: Colors.black,
-            child: const Text(
-              "Adriana Bernardo",
-              style: TextStyle(fontSize: 20),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const CircleAvatar(
-            backgroundColor: Colors.black,
-            radius: 100,
-            child: CircleAvatar(
-              radius: 95,
-              backgroundImage: AssetImage('assets/images/chaves.jpeg'),
-            ),
-          ),
-          const Text(
-            "O Professor gera um QR COde através do site e na aula partilha-o com os alunos.",
-            style: TextStyle(fontSize: 16),
-          ),
-          Container(
-            height: 35,
-          ),
-          Title(
-            color: Colors.black,
-            child: const Text(
-              "João Fernandes",
-              style: TextStyle(fontSize: 20),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const CircleAvatar(
-            backgroundColor: Colors.black,
-            radius: 100,
-            child: CircleAvatar(
-              radius: 95,
-              backgroundImage: AssetImage('assets/images/chaves.jpeg'),
-            ),
-          ),
-          const Text(
-            "O Professor gera um QR COde através do site e na aula partilha-o com os alunos.",
-            style: TextStyle(fontSize: 16),
-          ),
-          Container(
-            height: 35,
-          ),
-          Title(
-            color: Colors.black,
-            child: const Text(
-              "Fabio Baqueiro",
-              style: TextStyle(fontSize: 20),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const CircleAvatar(
-            backgroundColor: Colors.black,
-            radius: 100,
-            child: CircleAvatar(
-              radius: 95,
-              backgroundImage: AssetImage('assets/images/chaves.jpeg'),
-            ),
-          ),
-          const Text(
-            "O Professor gera um QR COde através do site e na aula partilha-o com os alunos.",
-            style: TextStyle(fontSize: 16),
-          ),
-          Container(
-            height: 35,
-          ),
-          Title(
-            color: Colors.black,
-            child: const Text(
-              "Pedro Mendes",
-              style: TextStyle(fontSize: 20),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const CircleAvatar(
-            backgroundColor: Colors.black,
-            radius: 100,
-            child: CircleAvatar(
-              radius: 95,
-              backgroundImage: AssetImage('assets/images/chaves.jpeg'),
-            ),
-          ),
-          const Text(
-            "O Professor gera um QR COde através do site e na aula partilha-o com os alunos.",
-            style: TextStyle(fontSize: 16),
-          ),
-          Container(
-            height: 35,
-          ),
-          Title(
-            color: Colors.black,
-            child: const Text(
-              "Samuel Pires",
-              style: TextStyle(fontSize: 20),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const CircleAvatar(
-            backgroundColor: Colors.black,
-            radius: 100,
-            child: CircleAvatar(
-              radius: 95,
-              backgroundImage: AssetImage('assets/images/chaves.jpeg'),
-            ),
-          ),
-          const Text(
-            "O Professor gera um QR COde através do site e na aula partilha-o com os alunos.",
-            style: TextStyle(fontSize: 16),
-          ),
-          Container(
-            height: 35,
           ),
         ],
       ),
