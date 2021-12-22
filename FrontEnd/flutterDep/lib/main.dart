@@ -73,10 +73,10 @@ class _MyAppState extends State<MyApp> {
             letterSpacing: 0,
           ),
           headline4: GoogleFonts.robotoCondensed(
-            wordSpacing: 1,
-            fontSize: 24,
-            letterSpacing: 0,
-          ),
+              wordSpacing: 1,
+              fontSize: 24,
+              letterSpacing: 0,
+              color: Theme.of(context).colorScheme.onPrimary),
         ),
         colorScheme: ColorScheme.dark(
             primary: Colors.blue.shade400,
