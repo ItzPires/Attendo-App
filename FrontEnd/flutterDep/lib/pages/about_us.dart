@@ -131,8 +131,8 @@ class _AboutUsPageState extends State<AboutUsPage> {
                         "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
                     DrawPerson("Fábio Vaqueiro", "fabio",
                         "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
-                    DrawPerson("Pedro Mendes", "mendes",
-                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
+                    DrawPerson(
+                        "Pedro Mendes", "mendes", "Sou um MON GO LOI DE"),
                     DrawPerson("Samuel Pires", "sam",
                         "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
                     DrawPerson("Pedro Chaves", "Chaves",

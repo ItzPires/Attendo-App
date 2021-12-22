@@ -42,8 +42,20 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  List<String> lectures = [];
+
+  @override
+  void initState() {
+    super.initState();
+    lectures.add('aula');
+    lectures.add('aula1');
+    lectures.add('aula2');
+  }
+
   @override
   Widget build(BuildContext context) {
+    print("aulas: ");
+    print(lectures.length);
     return GestureDetector(
       child: Scaffold(
         appBar: AppBar(
@@ -54,20 +66,20 @@ class _MainScreenState extends State<MainScreen> {
           ),
           centerTitle: false,
         ),
-         body: ListView(
-        padding: const EdgeInsets.all(8),
-        children: <Widget>[
-          Container(
-              height: 100,
-              color: Colors.amber[600],
-              child: const LectureText()),
-          Container(
-            height: 500,
-            color: Colors.amber[500],
-            child: const Center(child: LectureText()),
-          ),
-        ],
-      ),
+        body: ListView(
+          padding: const EdgeInsets.all(8),
+          children: <Widget>[
+            Container(
+                height: 110,
+                color: Colors.blue,
+                child: //Row(
+                    //children: [
+                    //Spacer(flex: 1,),
+                    (LectureText(lectures)
+                    //],
+                    )),
+          ],
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, '/scan'),
           tooltip: 'Scan Class QR Code',
@@ -127,7 +139,6 @@ class _MenuPageState extends State<MenuPage> {
     String firstName = names.first;
     String lastName = names.last;
     return Scaffold(
-
         body: Container(
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
@@ -273,28 +284,46 @@ class _MenuPageState extends State<MenuPage> {
 }
 
 class LectureText extends StatelessWidget {
-  const LectureText({Key? key}) : super(key: key);
+  final List<String> lectures;
+  LectureText(this.lectures);
+  Widget lectureItem(BuildContext context, int index) {
+    return Card(
+        child: Row(
+      children: [
+        Column(children: [
+          //letra inicial
+          Text.rich(TextSpan(
+            text: " A",
+            style: GoogleFonts.rye(
+                fontWeight: FontWeight.bold,
+                fontSize: 80,
+                letterSpacing: 0,
+                color: Colors.black),
+          )),
+        ]),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
+          child: Column(
+            children: [
+              Text.rich(TextSpan(
+                //text: "Cadeira: \nHora | Sala\nPresença: (Por marcar/marcada)",
+                text: lectures[index],
+                style: GoogleFonts.abel(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 21,
+                    letterSpacing: 0,
+                    color: Colors.black),
+              ))
+            ],
+          ),
+        )
+      ],
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle _initLecture = GoogleFonts.rye(
-      textStyle: const TextStyle(
-          fontWeight: FontWeight.normal, color: Colors.black, fontSize: 80),
-    );
-
-    final TextStyle _lectureText = GoogleFonts.abel(
-      textStyle: const TextStyle(
-          fontWeight: FontWeight.normal, color: Colors.black, fontSize: 21),
-    );
-
-    return RichText(
-        textAlign: TextAlign.left,
-        overflow: TextOverflow.clip,
-        text: TextSpan(children: [
-          TextSpan(text: " A", style: _initLecture),
-          TextSpan(
-              text: "Cadeira: \nHora | Sala\nPresença: (Por marcar/marcada)\n",
-              style: _lectureText)
-        ]));
+    return ListView.builder(
+        itemBuilder: lectureItem, itemCount: lectures.length);
   }
 }

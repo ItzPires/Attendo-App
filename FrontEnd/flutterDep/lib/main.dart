@@ -125,7 +125,7 @@ class _MyAppState extends State<MyApp> {
           floatingActionButtonTheme: const FloatingActionButtonThemeData(
             elevation: 10,
           )),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       initialRoute: '/',
       routes: {
         '/': (context) => Landing(),

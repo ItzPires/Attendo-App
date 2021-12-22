@@ -25,12 +25,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
-  void dispose() {
-    ScaffoldMessenger.of(context).clearSnackBars();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
