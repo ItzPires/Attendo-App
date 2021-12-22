@@ -3,11 +3,12 @@ class User {
   String mail;
   String aboutMe;
   int number;
+  int id;
   String authToken;
   bool isTeacher;
 
   User(this.name, this.mail, this.number, this.aboutMe, this.authToken,
-      this.isTeacher);
+      this.isTeacher, this.id);
 
   @override
   String toString() {
@@ -21,5 +22,6 @@ class User {
         number = json["number"],
         aboutMe = json["aboutMe"],
         authToken = json["authToken"],
-        isTeacher = json["isTeacher"];
+        isTeacher = json["isTeacher"],
+        id = json["id"];
 }

@@ -33,6 +33,89 @@ class _MyProfileState extends State<MyProfile> {
 
   @override
   Widget build(BuildContext context) {
+    if (!me!.isTeacher) {
+      return GestureDetector(
+        child: Scaffold(
+            appBar: AppBar(
+              title: Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Transform.scale(
+                      alignment: Alignment.center,
+                      scale: 0.35,
+                      child: const DrawLogoQROnly(),
+                      origin: const Offset(25, 0),
+                    ),
+                  ),
+                  const Expanded(
+                    flex: 10,
+                    child: Text(
+                      "Meu Perfil",
+                      textAlign: TextAlign.start,
+                    ),
+                  )
+                ],
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+              ),
+              titleSpacing: 0,
+              centerTitle: false,
+              leadingWidth: 25,
+              leading: BackButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    child: Center(
+                      child: templateImage(),
+                    ),
+                    padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    child: Center(
+                      child: Text(
+                        me != null ? me!.name.toString() : "Error loading name",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.onSurface,
+                            fontSize: 25,
+                            letterSpacing: 0.4,
+                            wordSpacing: 1,
+                            shadows: const [
+                              Shadow(
+                                  offset: Offset(1, 1),
+                                  blurRadius: 2,
+                                  color: Color(0x55000000)),
+                            ]),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+                    child: drawInformationStudent(context, _editingController),
+                  ),
+                ],
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+              ),
+            )),
+        onTap: () {
+          _isEditingText = false;
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.unfocus();
+          }
+        },
+      );
+    }
     return GestureDetector(
       child: Scaffold(
           appBar: AppBar(
@@ -81,13 +164,13 @@ class _MyProfileState extends State<MyProfile> {
                   child: Center(
                     child: Text(
                       me != null ? me!.name.toString() : "Error loading name",
-                      style: const TextStyle(
+                      style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: Theme.of(context).colorScheme.onSurface,
                           fontSize: 25,
                           letterSpacing: 0.4,
                           wordSpacing: 1,
-                          shadows: [
+                          shadows: const [
                             Shadow(
                                 offset: Offset(1, 1),
                                 blurRadius: 2,
@@ -98,7 +181,7 @@ class _MyProfileState extends State<MyProfile> {
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
-                  child: drawInformation(context, _editingController),
+                  child: drawInformationTeacher(context, _editingController),
                 ),
               ],
               mainAxisAlignment: MainAxisAlignment.start,
@@ -116,7 +199,7 @@ class _MyProfileState extends State<MyProfile> {
     );
   }
 
-  Widget drawInformation(context, _editingController) {
+  Widget drawInformationStudent(context, _editingController) {
     return Column(
       children: [
         Padding(
@@ -155,13 +238,40 @@ class _MyProfileState extends State<MyProfile> {
     );
   }
 
+  Widget drawInformationTeacher(context, _editingController) {
+    return Column(
+      children: [
+        Padding(
+          child: InputDecorator(
+            decoration: InputDecoration(
+                label: const Text("Mail de Professor:"),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                icon: const Icon(Icons.email_outlined),
+                labelStyle: Theme.of(context).textTheme.bodyText1),
+            child:
+                Text(me != null ? me!.mail.toString() : "Error loading mail"),
+          ),
+          padding: const EdgeInsets.fromLTRB(30, 40, 30, 0),
+        ),
+        Padding(
+          child: aboutMe(),
+          padding: const EdgeInsets.fromLTRB(30, 40, 30, 0),
+        )
+      ],
+    );
+  }
+
   Widget aboutMe() {
     if (_isEditingText) {
       return Center(
           child: InkWell(
         child: TextField(
           keyboardType: TextInputType.multiline,
-          maxLines: null,
+          minLines: 1,
+          maxLines: 3,
+          expands: false,
           decoration: InputDecoration(
               labelText: 'Sobre mim:',
               border:
@@ -170,12 +280,12 @@ class _MyProfileState extends State<MyProfile> {
               labelStyle: Theme.of(context).textTheme.bodyText1),
           onChanged: (newValue) {
             setState(() {
-              aboutMeStr = newValue;
+              me!.aboutMe = newValue;
             });
           },
           onSubmitted: (newValue) {
             setState(() {
-              aboutMeStr = newValue;
+              me!.aboutMe = newValue;
               _isEditingText = false;
             });
           },
@@ -198,7 +308,7 @@ class _MyProfileState extends State<MyProfile> {
             icon: const Icon(Icons.person_search_outlined),
             labelStyle: Theme.of(context).textTheme.bodyText1),
         child: Text(
-          aboutMeStr,
+          me!.aboutMe,
           softWrap: true,
           style: Theme.of(context).textTheme.bodyText1,
         ),
@@ -208,15 +318,27 @@ class _MyProfileState extends State<MyProfile> {
 }
 
 Widget templateImage() {
-  return ClipOval(
-      child: Material(
-    borderOnForeground: true,
-    color: Colors.transparent,
-    child: Ink.image(
-      image: const AssetImage('assets/images/profile.png'),
-      height: 100,
-      width: 100,
-      fit: BoxFit.scaleDown,
+  return CircleAvatar(
+    backgroundColor: Colors.blue,
+    child: FittedBox(
+      fit: BoxFit.fill,
+      child: Text(
+        getInitials(me!.name),
+        softWrap: true,
+        style: const TextStyle(color: Colors.black),
+        textScaleFactor: 2,
+      ),
     ),
-  ));
+    radius: 50,
+  );
+}
+
+String getInitials(String str) {
+  List<String> listStr = str.split(" ");
+  String out = "";
+  for (int i = 0; i < listStr.length; i++) {
+    if (listStr[i].isNotEmpty) out = out + listStr[i][0];
+  }
+
+  return out;
 }

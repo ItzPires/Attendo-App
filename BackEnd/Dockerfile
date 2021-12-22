@@ -8,6 +8,8 @@ RUN pip install django
 
 RUN pip install psycopg2-binary
 
+RUN pip install gunicorn
+
 RUN pip install djangorestframework
 
 RUN pip install django-cors-headers
@@ -22,7 +24,7 @@ VOLUME ["/attendoBE"]
 WORKDIR /attendoBE
 
 #CMD python manage.py makemigrations ; python manage.py migrate ; python manage.py runserver 0.0.0.0:8000
-CMD python manage.py runserver 0.0.0.0:8000
+CMD python manage.py runserver 0.0.0.0:80
 
 
-EXPOSE 8000
+EXPOSE 80

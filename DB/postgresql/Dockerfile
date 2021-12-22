@@ -2,7 +2,7 @@ FROM library/postgres
 
 ENV POSTGRES_DB attendo
 ENV POSTGRES_USER attendo
-ENV POSTGRES_PASSWORD attendo
+ENV POSTGRES_PASSWORD XauCao123
 
 
 COPY 1-tables.sql /docker-entrypoint-initdb.d/

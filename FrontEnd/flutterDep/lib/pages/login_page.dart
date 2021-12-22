@@ -18,10 +18,16 @@ class _LoginPageState extends State<LoginPage> {
   String password = "";
   Future<String>? loggedInString;
   bool hasTried = false;
-  late ApiResponse _apiResponse;
+  late ApiResponseLogin _apiResponse;
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    ScaffoldMessenger.of(context).clearSnackBars();
+    super.dispose();
   }
 
   @override
@@ -40,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               const Padding(
-                padding: EdgeInsets.only(top: 30.0),
+                padding: EdgeInsets.only(top: 70.0),
                 child: Center(
                   child: SizedBox(width: 200, height: 150, child: DrawLogo()),
                 ),
@@ -48,22 +54,27 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                   padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
                   child: TextFormField(
-                    decoration: InputDecoration(
-                        labelText: 'Email:',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0)),
-                        labelStyle: Theme.of(context).textTheme.bodyText2),
-                    keyboardType: TextInputType.text,
-                    onSaved: (String? value) {
-                      email = value ?? "";
-                    },
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Username is required';
-                      }
-                      return null;
-                    },
-                  )),
+                      decoration: InputDecoration(
+                          labelText: 'Email:',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0)),
+                          labelStyle: Theme.of(context).textTheme.bodyText2),
+                      keyboardType: TextInputType.emailAddress,
+                      onSaved: (String? value) {
+                        email = value ?? "";
+                      },
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Inserir Email';
+                        }
+                        bool emailValid = RegExp(
+                                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(value);
+                        if (!emailValid) {
+                          return 'Email inválido';
+                        }
+                        return null;
+                      })),
               Padding(
                   padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
                   child: TextFormField(
@@ -78,26 +89,30 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Password is required';
+                        return 'Inserir Password';
                       }
                       return null;
                     },
+                    keyboardType: TextInputType.text,
                   )),
               const SizedBox(height: 10.0),
               ButtonBar(
                 alignment: MainAxisAlignment.center,
                 children: <Widget>[
                   ElevatedButton.icon(
-                      style: ButtonStyle(
-                          shadowColor: MaterialStateProperty.all<Color>(
-                              const Color(0x99000000)),
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.black),
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                          elevation: MaterialStateProperty.all<double>(5)),
+                      style: ElevatedButton.styleFrom(
+                        elevation: 3,
+                        animationDuration: Duration(seconds: 1),
+                        fixedSize: const Size.fromWidth(150),
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                      ),
                       onPressed: _handleSubmitted,
-                      icon: const Icon(Icons.arrow_forward),
-                      label: const Text('Sign in')),
+                      icon: const Icon(
+                        Icons.arrow_forward,
+                      ),
+                      label: const Text(' Sign in ')),
                 ],
               ),
               Padding(
@@ -105,9 +120,11 @@ class _LoginPageState extends State<LoginPage> {
                     left: 30.0, right: 30.0, top: 80, bottom: 0),
                 child: TextButton(
                   onPressed: () {},
-                  child: const Text(
+                  child: Text(
                     'Criar Conta',
-                    style: TextStyle(color: Colors.black, fontSize: 15),
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurface,
+                        fontSize: 15),
                   ),
                 ),
               ),
@@ -116,9 +133,11 @@ class _LoginPageState extends State<LoginPage> {
                     left: 30.0, right: 30.0, top: 10, bottom: 0),
                 child: TextButton(
                   onPressed: () {},
-                  child: const Text(
+                  child: Text(
                     'Recuperar Password',
-                    style: TextStyle(color: Colors.black, fontSize: 15),
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurface,
+                        fontSize: 15),
                   ),
                 ),
               ),
@@ -132,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
   void _handleSubmitted() async {
     final FormState? form = _formKey.currentState;
     if (!form!.validate()) {
-      showInSnackBar('Please fix the errors in red before submitting.');
+      showInSnackBar('Verificar erros de input');
     } else {
       form.save();
       _apiResponse = await authenticateUser(email, password);
@@ -146,12 +165,14 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void showInSnackBar(String message) {
+    ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(message),
     ));
   }
 
   void _saveAndRedirectToHome() async {
+    ScaffoldMessenger.of(context).clearSnackBars();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString("userMail", _apiResponse.Data.mail);
     await prefs.setString("userPassword", password);
