@@ -44,6 +44,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  List<String> lectures = [];
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -359,28 +361,46 @@ class _MenuPageState extends State<MenuPage> {
 }
 
 class LectureText extends StatelessWidget {
-  const LectureText({Key? key}) : super(key: key);
+  final List<String> lectures;
+  LectureText(this.lectures);
+  Widget lectureItem(BuildContext context, int index) {
+    return Card(
+        child: Row(
+      children: [
+        Column(children: [
+          //letra inicial
+          Text.rich(TextSpan(
+            text: " A",
+            style: GoogleFonts.rye(
+                fontWeight: FontWeight.bold,
+                fontSize: 80,
+                letterSpacing: 0,
+                color: Colors.black),
+          )),
+        ]),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
+          child: Column(
+            children: [
+              Text.rich(TextSpan(
+                //text: "Cadeira: \nHora | Sala\nPresença: (Por marcar/marcada)",
+                text: lectures[index],
+                style: GoogleFonts.abel(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 21,
+                    letterSpacing: 0,
+                    color: Colors.black),
+              ))
+            ],
+          ),
+        )
+      ],
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle _initLecture = GoogleFonts.rye(
-      textStyle: const TextStyle(
-          fontWeight: FontWeight.normal, color: Colors.black, fontSize: 80),
-    );
-
-    final TextStyle _lectureText = GoogleFonts.abel(
-      textStyle: const TextStyle(
-          fontWeight: FontWeight.normal, color: Colors.black, fontSize: 21),
-    );
-
-    return RichText(
-        textAlign: TextAlign.left,
-        overflow: TextOverflow.clip,
-        text: TextSpan(children: [
-          TextSpan(text: " A", style: _initLecture),
-          TextSpan(
-              text: "Cadeira: \nHora | Sala\nPresença: (Por marcar/marcada)\n",
-              style: _lectureText)
-        ]));
+    return ListView.builder(
+        itemBuilder: lectureItem, itemCount: lectures.length);
   }
 }
