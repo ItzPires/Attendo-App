@@ -5,8 +5,6 @@ import 'package:uc_here/const/constants.dart';
 import 'package:uc_here/models/api_response.dart';
 import 'package:uc_here/models/user.dart';
 
-import '../beta.dart';
-
 final _formKey = GlobalKey<FormState>();
 
 class LoginPage extends StatefulWidget {
@@ -112,19 +110,34 @@ class _LoginPageState extends State<LoginPage> {
                       label: const Text(' Sign in ')),
                 ],
               ),
+              ButtonBar(
+                alignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        elevation: 3,
+                        animationDuration: Duration(seconds: 1),
+                        fixedSize: const Size.fromWidth(200),
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                      ),
+                      onPressed: () {
+                        email = "demo";
+                        password = "demo";
+                        _handleSubmitted();
+                      },
+                      icon: const Icon(
+                        Icons.arrow_forward,
+                      ),
+                      label: const Text(' Conta Demonstração ')),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.only(
                     left: 30.0, right: 30.0, top: 80, bottom: 0),
                 child: TextButton(
-                  onPressed: () {
-                    betaTest = true;
-                    myLectures = initBeta();
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      '/home',
-                      ModalRoute.withName('/home'),
-                    );
-                  },
+                  onPressed: () {},
                   child: Text(
                     'Criar Conta',
                     style: TextStyle(
@@ -137,16 +150,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.only(
                     left: 30.0, right: 30.0, top: 10, bottom: 0),
                 child: TextButton(
-                  onPressed: () {
-                    betaTest = true;
-                    me = User("Testador Beta", "uc0123456789@student.uc.pt", 1,
-                        "", "asddasdsadasdgfdgxc3242df", false, 1);
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      '/home',
-                      ModalRoute.withName('/home'),
-                    );
-                  },
+                  onPressed: () {},
                   child: Text(
                     'Recuperar Password',
                     style: TextStyle(
@@ -164,7 +168,12 @@ class _LoginPageState extends State<LoginPage> {
 
   void _handleSubmitted() async {
     final FormState? form = _formKey.currentState;
-    if (!form!.validate()) {
+
+    if (email == "demo" && password == "demo") {
+      _apiResponse = await authenticateUser(email, password);
+      _saveAndRedirectToHome();
+      return;
+    } else if (!form!.validate()) {
       showInSnackBar('Verificar erros de input');
     } else {
       form.save();
@@ -191,9 +200,7 @@ class _LoginPageState extends State<LoginPage> {
     await prefs.setString("userMail", _apiResponse.Data.mail);
     await prefs.setString("userPassword", password);
     Navigator.pushNamedAndRemoveUntil(
-      context,
-      '/home',
-      ModalRoute.withName('/home'),
-    );
+        context, '/home', ModalRoute.withName('/home'),
+        arguments: (_apiResponse.Data));
   }
 }
