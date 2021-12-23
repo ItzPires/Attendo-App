@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart' as anim;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -109,28 +110,40 @@ class _AboutUsPageState extends State<AboutUsPage> {
                 textAlign: TextAlign.center,
                 softWrap: true,
               )),
-          Padding(
+          const Padding(
               padding: EdgeInsets.fromLTRB(0, 40, 0, 10),
               child: SizedBox(width: 210, height: 120, child: AnimatedText())),
           Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-              child: Text(
-                "Arrasta para conheceres cada um de nós:",
-                style: Theme.of(context).textTheme.headline4,
-                textAlign: TextAlign.center,
-              )),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
             child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
+                    Container(
+                        padding: EdgeInsets.fromLTRB(
+                            MediaQuery.of(context).size.width * 0.1,
+                            0,
+                            MediaQuery.of(context).size.width * 0.1,
+                            0),
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        child: anim.AnimatedTextKit(
+                          animatedTexts: [
+                            anim.TypewriterAnimatedText(
+                                "Arrasta e conhece cada um de nós",
+                                textStyle:
+                                    Theme.of(context).textTheme.headline4,
+                                textAlign: TextAlign.center,
+                                speed: const Duration(milliseconds: 100))
+                          ],
+                          isRepeatingAnimation: true,
+                          repeatForever: true,
+                        )),
                     DrawPerson("Adriana Bernardo", "Adriana",
-                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
+                        "A única rapariga do grupo, não gosta de programar e tem mau feitio.\nGosta de preencher e de completar templates, assim como tratar das redes sociais.\nDeu origem à ideia que depois foi refinada pelo resto da equipa.\nPor ela a aplicação seria full cor-de-rosa."),
                     DrawPerson("Pedro Duarte", "Duarte",
                         "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
-                    DrawPerson("Fábio Vaqueiro", "fabio",
-                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
+                    DrawPerson(
+                        "Fábio Vaqueiro", "fabio", "O Fábio é um Mongoloide"),
                     DrawPerson("Pedro Mendes", "mendes",
                         "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
                     DrawPerson("Samuel Pires", "sam",
@@ -171,12 +184,20 @@ class _AboutUsPageState extends State<AboutUsPage> {
           MediaQuery.of(context).size.width * 0.05, 0),
       width: MediaQuery.of(context).size.width,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Title(
-            color: Colors.black,
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+              0,
+              MediaQuery.of(context).size.width * 0.02,
+              0,
+              MediaQuery.of(context).size.width * 0.01,
+            ),
             child: Text(
               name,
-              style: TextStyle(fontSize: 20),
+              style: Theme.of(context).textTheme.headline4,
               textAlign: TextAlign.center,
             ),
           ),
@@ -188,10 +209,24 @@ class _AboutUsPageState extends State<AboutUsPage> {
               backgroundImage: AssetImage('assets/Membros/$photo.png'),
             ),
           ),
-          Text(
-            description,
-            style: TextStyle(fontSize: 16),
-          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+              0,
+              MediaQuery.of(context).size.width * 0.05,
+              0,
+              MediaQuery.of(context).size.width * 0.01,
+            ),
+            child: Text(
+              description,
+              style: GoogleFonts.roboto(
+                fontWeight: FontWeight.normal,
+                fontSize: 18,
+                letterSpacing: 0,
+              ),
+              textAlign: TextAlign.center,
+              semanticsLabel: "Descrição dos membros",
+            ),
+          )
         ],
       ),
     );

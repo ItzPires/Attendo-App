@@ -85,46 +85,47 @@ class _MyAppState extends State<MyApp> {
             secondaryVariant: Colors.blue.shade400),
       ),
       theme: ThemeData(
-          appBarTheme: AppBarTheme(
-              elevation: 2,
-              toolbarHeight: 55,
-              shadowColor: Theme.of(context).colorScheme.onSurface,
-              foregroundColor: Theme.of(context).colorScheme.onSurface,
-              backgroundColor: Theme.of(context).colorScheme.onPrimary),
-          textTheme: TextTheme(
-            overline: GoogleFonts.roboto(
-              fontWeight: FontWeight.normal,
-              color: Colors.black,
-              fontSize: 12,
-              letterSpacing: 0,
-            ),
-            bodyText1: GoogleFonts.roboto(
-              fontWeight: FontWeight.normal,
-              color: Colors.black,
-              fontSize: 16,
-              letterSpacing: 0,
-            ),
-            caption: GoogleFonts.roboto(
-              fontWeight: FontWeight.normal,
-              color: Colors.black,
-              fontSize: 12,
-              letterSpacing: 0,
-            ),
-            headline4: GoogleFonts.robotoCondensed(
-              color: Colors.black,
-              wordSpacing: 1,
-              fontSize: 24,
-              letterSpacing: 0,
-            ),
+        appBarTheme: AppBarTheme(
+            elevation: 2,
+            toolbarHeight: 55,
+            shadowColor: Theme.of(context).colorScheme.onSurface,
+            foregroundColor: Theme.of(context).colorScheme.onSurface,
+            backgroundColor: Theme.of(context).colorScheme.onPrimary),
+        textTheme: TextTheme(
+          overline: GoogleFonts.roboto(
+            fontWeight: FontWeight.normal,
+            color: Colors.black,
+            fontSize: 12,
+            letterSpacing: 0,
           ),
-          colorScheme: ColorScheme.light(
-              primary: Colors.blue.shade600,
-              primaryVariant: Colors.blueAccent,
-              secondary: Colors.blue.shade600,
-              secondaryVariant: Colors.blue.shade600),
-          floatingActionButtonTheme: const FloatingActionButtonThemeData(
-            elevation: 10,
-          )),
+          bodyText1: GoogleFonts.roboto(
+            fontWeight: FontWeight.normal,
+            color: Colors.black,
+            fontSize: 16,
+            letterSpacing: 0,
+          ),
+          caption: GoogleFonts.roboto(
+            fontWeight: FontWeight.normal,
+            color: Colors.black,
+            fontSize: 12,
+            letterSpacing: 0,
+          ),
+          headline4: GoogleFonts.robotoCondensed(
+            color: Colors.black,
+            wordSpacing: 1,
+            fontSize: 24,
+            letterSpacing: 0,
+          ),
+        ),
+        colorScheme: ColorScheme.light(
+            primary: Colors.blue.shade600,
+            primaryVariant: Colors.blueAccent,
+            secondary: Colors.blue.shade600,
+            secondaryVariant: Colors.blue.shade600),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          elevation: 10,
+        ),
+      ),
       themeMode: ThemeMode.light,
       initialRoute: '/',
       routes: {

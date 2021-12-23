@@ -16,7 +16,7 @@ class ScanPage extends StatefulWidget {
 class _ScanPageState extends State<ScanPage> {
   QRViewController? qrController;
   GlobalKey qRKey = GlobalKey(debugLabel: 'Qr');
-
+  CameraFacing cameraOrient = CameraFacing.back;
   @override
   void dispose() {
     qrController?.dispose();
@@ -42,44 +42,61 @@ class _ScanPageState extends State<ScanPage> {
         buildQrView(context),
         Positioned(
           child: FloatingActionButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => {Navigator.pop(context)},
             tooltip: 'Scan QR Code',
             child: const Icon(
               Icons.arrow_back,
               color: Color(0xFFFFFFFF),
             ),
-            backgroundColor: const Color(0x5C493A3A),
+            backgroundColor: const Color(0x1affffff),
             elevation: 0,
             isExtended: false,
           ),
           bottom: 30,
           left: 20,
         ),
+        Positioned(
+          child: IconButton(
+              iconSize: 50,
+              onPressed: () {
+                setState(() {
+                  if (cameraOrient == CameraFacing.back) {
+                    cameraOrient = CameraFacing.front;
+                  } else {
+                    cameraOrient = CameraFacing.back;
+                  }
+                });
+              },
+              icon: const Icon(Icons.cameraswitch_outlined)),
+          bottom: 30,
+        )
       ],
     ));
   }
 
-  Widget buildQrView(BuildContext context) => QRView(
-        key: qRKey,
-        onQRViewCreated: viewQRCode,
-        overlay: QrScannerOverlayShape(
-          borderLength: MediaQuery.of(context).size.shortestSide * 0.13,
-          borderRadius: MediaQuery.of(context).size.shortestSide * 0.1,
-          borderWidth: MediaQuery.of(context).size.shortestSide * 0.03,
-          borderColor: Colors.black,
-          cutOutSize: MediaQuery.of(context).size.shortestSide * 0.8,
-        ),
-      );
+  Widget buildQrView(BuildContext context) {
+    return QRView(
+      key: qRKey,
+      onQRViewCreated: viewQRCode,
+      cameraFacing: cameraOrient,
+      formatsAllowed: const [BarcodeFormat.qrcode],
+      overlay: QrScannerOverlayShape(
+        borderLength: MediaQuery.of(context).size.shortestSide * 0.13,
+        borderRadius: MediaQuery.of(context).size.shortestSide * 0.1,
+        borderWidth: MediaQuery.of(context).size.shortestSide * 0.03,
+        borderColor: Colors.black,
+        cutOutSize: MediaQuery.of(context).size.shortestSide * 0.8,
+      ),
+    );
+  }
 
   void viewQRCode(QRViewController qrController) {
     setState(() {
       this.qrController = qrController;
     });
     qrController.scannedDataStream.listen((barcode) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ValidatePage(code: barcode.code)));
+      Navigator.pushReplacementNamed(context, "/validate",
+          arguments: barcode.code);
       dispose();
     });
   }
