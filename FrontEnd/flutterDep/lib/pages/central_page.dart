@@ -48,6 +48,8 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("aulas: ");
+    print(lectures.length);
     return GestureDetector(
       child: Scaffold(
         appBar: AppBar(

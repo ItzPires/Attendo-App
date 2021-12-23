@@ -141,11 +141,12 @@ class _AboutUsPageState extends State<AboutUsPage> {
                     DrawPerson("Adriana Bernardo", "Adriana",
                         "A única rapariga do grupo, não gosta de programar e tem mau feitio.\nGosta de preencher e de completar templates, assim como tratar das redes sociais.\nDeu origem à ideia que depois foi refinada pelo resto da equipa.\nPor ela a aplicação seria full cor-de-rosa."),
                     DrawPerson("Pedro Duarte", "Duarte",
-                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
+
                     DrawPerson(
                         "Fábio Vaqueiro", "fabio", "O Fábio é um Mongoloide"),
                     DrawPerson("Pedro Mendes", "mendes",
                         "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
+
                     DrawPerson("Samuel Pires", "sam",
                         "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
                     DrawPerson("Pedro Chaves", "Chaves",
