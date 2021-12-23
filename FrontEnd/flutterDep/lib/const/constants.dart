@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uc_here/models/lecture.dart';
 
 import 'package:uc_here/models/user.dart';
 
 //TEST IN ANDROID STUDIO
 String apiURLTest = "http://10.3.3.109/";
 User? me;
+List<Lecture> myLectures = [];
 
 class DrawLogo extends StatelessWidget {
   const DrawLogo({Key? key}) : super(key: key);

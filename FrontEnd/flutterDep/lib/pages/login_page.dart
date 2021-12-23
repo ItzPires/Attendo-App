@@ -3,6 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uc_here/apiCalls/login.dart';
 import 'package:uc_here/const/constants.dart';
 import 'package:uc_here/models/api_response.dart';
+import 'package:uc_here/models/user.dart';
+
+import '../beta.dart';
 
 final _formKey = GlobalKey<FormState>();
 
@@ -113,7 +116,15 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.only(
                     left: 30.0, right: 30.0, top: 80, bottom: 0),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    betaTest = true;
+                    myLectures = initBeta();
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      '/home',
+                      ModalRoute.withName('/home'),
+                    );
+                  },
                   child: Text(
                     'Criar Conta',
                     style: TextStyle(
@@ -126,7 +137,16 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.only(
                     left: 30.0, right: 30.0, top: 10, bottom: 0),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    betaTest = true;
+                    me = User("Testador Beta", "uc0123456789@student.uc.pt", 1,
+                        "", "asddasdsadasdgfdgxc3242df", false, 1);
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      '/home',
+                      ModalRoute.withName('/home'),
+                    );
+                  },
                   child: Text(
                     'Recuperar Password',
                     style: TextStyle(
@@ -171,7 +191,9 @@ class _LoginPageState extends State<LoginPage> {
     await prefs.setString("userMail", _apiResponse.Data.mail);
     await prefs.setString("userPassword", password);
     Navigator.pushNamedAndRemoveUntil(
-        context, '/home', ModalRoute.withName('/home'),
-        arguments: (_apiResponse.Data));
+      context,
+      '/home',
+      ModalRoute.withName('/home'),
+    );
   }
 }

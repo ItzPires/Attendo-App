@@ -7,6 +7,8 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
+import 'dart:math';
+
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
 
@@ -66,19 +68,85 @@ class _MainScreenState extends State<MainScreen> {
           ),
           centerTitle: false,
         ),
-        body: ListView(
-          padding: const EdgeInsets.all(8),
-          children: <Widget>[
-            Container(
-                height: 110,
-                color: Colors.blue,
-                child: //Row(
-                    //children: [
-                    //Spacer(flex: 1,),
-                    (LectureText(lectures)
-                    //],
-                    )),
-          ],
+
+        body: ListView.builder(
+          itemBuilder: (context, i) {
+            if (i == 0) myLectures[i].presence_checked = true;
+            return Padding(
+                padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                child: ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                      primary: const Color(0x00000000),
+                      shadowColor: Colors.black26,
+                      elevation: 2,
+                      alignment: Alignment.centerLeft,
+                      fixedSize: Size(MediaQuery.of(context).size.width,
+                          MediaQuery.of(context).size.height * 0.15),
+                      shape: RoundedRectangleBorder(
+                          side: BorderSide(width: 2, color: Colors.black45),
+                          borderRadius: BorderRadius.circular(10))),
+                  icon: Container(
+                      width: MediaQuery.of(context).size.shortestSide * 0.15,
+                      child: FittedBox(
+                        child: Text.rich(
+                          TextSpan(
+                            text: myLectures[i].abbreviation,
+                            style: GoogleFonts.robotoCondensed(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 35,
+                                letterSpacing: 0,
+                                color: Theme.of(context).colorScheme.onSurface),
+                          ),
+                        ),
+                        fit: BoxFit.scaleDown,
+                      )),
+                  label: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const VerticalDivider(
+                          endIndent: 10,
+                          indent: 10,
+                          color: Colors.black38,
+                          thickness: 1,
+                          width: 2,
+                        ),
+                        Container(
+                          width:
+                              MediaQuery.of(context).size.shortestSide * 0.615,
+                          padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(
+                                    MediaQuery.of(context).size.shortestSide *
+                                        0.015,
+                                    0,
+                                    0,
+                                    0),
+                                child: Text(
+                                  myLectures[i].subject,
+                                  textAlign: TextAlign.start,
+                                  style: GoogleFonts.roboto(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                    letterSpacing: 0,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        drawIconClass(myLectures[i].presence_checked)
+                      ]),
+                  onPressed: () => {},
+                ));
+          },
+          itemCount: myLectures.length,
+
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, '/scan'),
@@ -91,20 +159,20 @@ class _MainScreenState extends State<MainScreen> {
           notchMargin: MediaQuery.of(context).size.width * 0.009,
           child: Row(
             children: [
-              Spacer(
+              const Spacer(
                 flex: 1,
               ),
               IconButton(
                 icon: const Icon(Icons.menu),
                 onPressed: () => ZoomDrawer.of(context)!.toggle(),
               ),
-              Spacer(flex: 4),
+              const Spacer(flex: 4),
               IconButton(
                   icon: const Icon(Icons.person_sharp),
                   onPressed: () {
                     Navigator.pushNamed(context, '/profile');
                   }),
-              Spacer(flex: 1),
+              const Spacer(flex: 1),
             ],
           ),
         ),
@@ -113,6 +181,23 @@ class _MainScreenState extends State<MainScreen> {
         if (details.delta.dx > 5) ZoomDrawer.of(context)!.toggle();
       },
     );
+  }
+
+  Widget drawIconClass(bool qrCodeRead) {
+    if (qrCodeRead) {
+      return Icon(
+        Icons.check,
+        color: Colors.green.shade400,
+        size: 27,
+      );
+    }
+    return Transform.rotate(
+        angle: -pi / 4.0,
+        child: const Icon(
+          Icons.add,
+          color: Colors.black38,
+          size: 30,
+        ));
   }
 }
 
@@ -126,6 +211,7 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> {
   //TO USE
   void _handleLogout() async {
+    me = null;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove('userMail');
     prefs.remove('userPassword');
@@ -135,7 +221,7 @@ class _MenuPageState extends State<MenuPage> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> names = me!.name.split(" ");
+    List<String>? names = me!.name.split(" ");
     String firstName = names.first;
     String lastName = names.last;
     return Scaffold(
