@@ -22,6 +22,8 @@ class _LoginPageState extends State<LoginPage> {
   Future<String>? loggedInString;
   bool hasTried = false;
   late ApiResponseLogin _apiResponse;
+  bool didSnackBars = false;
+
   @override
   void initState() {
     super.initState();
@@ -29,7 +31,10 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void dispose() {
-    ScaffoldMessenger.of(context).clearSnackBars();
+    if (didSnackBars) {
+      ScaffoldMessenger.of(context).clearSnackBars();
+    }
+
     super.dispose();
   }
 
@@ -105,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
                         elevation: 3,
-                        animationDuration: Duration(seconds: 1),
+                        animationDuration: const Duration(seconds: 1),
                         fixedSize: const Size.fromWidth(150),
                         shape: const RoundedRectangleBorder(
                             borderRadius:
@@ -118,13 +123,37 @@ class _LoginPageState extends State<LoginPage> {
                       label: const Text(' Sign in ')),
                 ],
               ),
+              ButtonBar(
+                alignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        elevation: 3,
+                        animationDuration: Duration(seconds: 1),
+                        fixedSize: const Size.fromWidth(200),
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                      ),
+                      onPressed: () async {
+                        email = "uc2024456789@student.uc.pt";
+                        password = "demo";
+                        _apiResponse = await authenticateUser(email, password);
+                        betaTest = true;
+                        myLectures = initBeta();
+                        _saveAndRedirectToHome();
+                      },
+                      icon: const Icon(
+                        Icons.arrow_forward,
+                      ),
+                      label: const Text(' Conta Demonstração ')),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.only(
                     left: 30.0, right: 30.0, top: 80, bottom: 0),
                 child: TextButton(
                   onPressed: () {
-                    betaTest = true;
-                    myLectures = initBeta();
                     Navigator.pushNamedAndRemoveUntil(
                       context,
                       '/home',
@@ -143,16 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.only(
                     left: 30.0, right: 30.0, top: 10, bottom: 0),
                 child: TextButton(
-                  onPressed: () {
-                    betaTest = true;
-                    me = User("Testador Beta", "uc0123456789@student.uc.pt", 1,
-                        "", "asddasdsadasdgfdgxc3242df", false, 1);
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      '/home',
-                      ModalRoute.withName('/home'),
-                    );
-                  },
+                  onPressed: () {},
                   child: Text(
                     'Recuperar Password',
                     style: TextStyle(
@@ -185,6 +205,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void showInSnackBar(String message) {
+    didSnackBars = true;
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(message),

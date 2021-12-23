@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:uc_here/beta.dart';
 import 'package:uc_here/const/constants.dart';
 import 'package:uc_here/models/api_response.dart';
 import 'package:uc_here/models/user.dart';
@@ -8,6 +9,20 @@ import 'package:uc_here/models/user.dart';
 Future<ApiResponseLogin> authenticateUser(String email, String password) async {
   ApiResponseLogin _apiResponse = ApiResponseLogin();
   try {
+    if (email == "uc2024456789@student.uc.pt" && password == "demo") {
+      _apiResponse.Data = User(
+          "Conta Demonstração",
+          "uc2024456789@student.uc.pt",
+          2024456789,
+          "Sou uma conta de demonstração Feliz :)",
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDAyNzY1Nzh9.ojpNV9Pl-DJUx7N9o0ITYFAkdylifybdDLmvVrVu1u4",
+          false,
+          -1);
+      _apiResponse.ApiError = "";
+      initBeta();
+      me = _apiResponse.Data;
+      return _apiResponse;
+    }
     final response = await http.post(
       Uri.parse(apiURLTest + "login/"),
       body: jsonEncode(<String, String>{

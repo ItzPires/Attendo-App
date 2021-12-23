@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uc_here/const/constants.dart';
 
-import 'package:uc_here/pages/profile.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-
+import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'dart:math';
@@ -32,6 +31,7 @@ class _MainPageState extends State<MainPage> {
         borderRadius: 24.0,
         menuScreen: const MenuPage(),
         mainScreen: const MainScreen(),
+        clipMainScreen: true,
         slideWidth: MediaQuery.of(context).size.width * 0.70);
   }
 }
@@ -58,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
         ),
         body: ListView.builder(
           itemBuilder: (context, i) {
-            if (i == 0) myLectures[i].presence_checked = true;
+            if (i == 0) myLectures[i].presenceChecked = true;
             return Padding(
                 padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
                 child: ElevatedButton.icon(
@@ -70,9 +70,10 @@ class _MainScreenState extends State<MainScreen> {
                       fixedSize: Size(MediaQuery.of(context).size.width,
                           MediaQuery.of(context).size.height * 0.15),
                       shape: RoundedRectangleBorder(
-                          side: BorderSide(width: 2, color: Colors.black45),
+                          side:
+                              const BorderSide(width: 2, color: Colors.black45),
                           borderRadius: BorderRadius.circular(10))),
-                  icon: Container(
+                  icon: SizedBox(
                       width: MediaQuery.of(context).size.shortestSide * 0.15,
                       child: FittedBox(
                         child: Text.rich(
@@ -127,9 +128,11 @@ class _MainScreenState extends State<MainScreen> {
                             ],
                           ),
                         ),
-                        drawIconClass(myLectures[i].presence_checked)
+                        drawIconClass(myLectures[i].presenceChecked)
                       ]),
-                  onPressed: () => {},
+                  onPressed: () => {
+                    Navigator.pushNamed(context, '/scan'),
+                  },
                 ));
           },
           itemCount: myLectures.length,

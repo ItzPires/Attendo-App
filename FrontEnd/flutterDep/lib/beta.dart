@@ -5,54 +5,57 @@ import 'package:uc_here/models/user.dart';
 bool betaTest = false;
 
 List<Lecture> initBeta() {
-  me = User("Testador Beta", "uc0123456789@student.uc.pt", 1, "",
-      "asddasdsadasdgfdgxc3242df", false, 1);
   List<Lecture> betaList = [];
 
   betaList.add(Lecture(
-      "Processos de Gestão e Inovação",
+      "Processos de Gestão e Inovaçã asdasdas sadas as asd sas so",
       "PGI",
       "C5.1",
       "Clara Luxo",
+      "Departamento de Engenharia Informática",
       DateTime(2021, 12, 29, 18, 00),
       DateTime(2021, 12, 29, 20, 00),
-      "213131453425234452346523654645363546"));
+      "209147244219432763786233825162328932355"));
 
   betaList.add(Lecture(
       "Processos de Gestão e Inovação 1",
       "IPRP",
       "C5.1",
       "Clara Luxo",
+      "Departamento de Engenharia Informática",
       DateTime(2021, 12, 29, 18, 00),
       DateTime(2021, 12, 29, 20, 00),
-      "14312132121332143214"));
+      "242391413693964710686089183179625759350"));
 
   betaList.add(Lecture(
       "Processos de Gestão e Inovação 2",
       "PGI2",
       "C5.1",
       "Clara Luxo",
+      "Departamento de Engenharia Informática",
       DateTime(2021, 12, 29, 18, 00),
       DateTime(2021, 12, 29, 20, 00),
-      "14567123123341234123432"));
+      "258468764011441421970314435302933955190"));
 
   betaList.add(Lecture(
       "Processos de Gestão e Inovação 3",
       "PGI3",
       "C5.1",
       "Clara Luxo",
+      "Departamento de Engenharia Informática",
       DateTime(2021, 12, 29, 18, 00),
       DateTime(2021, 12, 29, 20, 00),
-      "1521342233412343124532154315342"));
+      "268957502355854452556498765548651315830"));
 
   betaList.add(Lecture(
       "Processos de Gestão e Inovação 4",
       "PGI4",
       "C5.1",
       "Clara Luxo",
+      "Departamento de Engenharia Informática",
       DateTime(2021, 12, 29, 18, 00),
       DateTime(2021, 12, 29, 20, 00),
-      "543653461231242341325435"));
+      "277530754883947741677621374609566761590"));
 
   return betaList;
 }

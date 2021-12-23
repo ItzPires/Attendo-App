@@ -50,6 +50,7 @@ dependencies:
   path_provider: ^2.0.8
   permission_handler: ^8.3.0
   flutter_zoom_drawer: ^2.1.2
+  flutter_calendar_carousel: ^2.1.0
 
 dev_dependencies:
   flutter_test:

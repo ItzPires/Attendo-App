@@ -3,10 +3,11 @@ class Lecture {
   String abbreviation;
   String classroom;
   String teacherName;
+  String department;
   DateTime begin;
   DateTime end;
   String qrcode;
-  bool presence_checked = false;
+  bool presenceChecked = false;
   Lecture(this.subject, this.abbreviation, this.classroom, this.teacherName,
-      this.begin, this.end, this.qrcode);
+      this.department, this.begin, this.end, this.qrcode);
 }
