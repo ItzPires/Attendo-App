@@ -68,7 +68,6 @@ class _MainScreenState extends State<MainScreen> {
           ),
           centerTitle: false,
         ),
-
         body: ListView.builder(
           itemBuilder: (context, i) {
             if (i == 0) myLectures[i].presence_checked = true;
@@ -146,7 +145,6 @@ class _MainScreenState extends State<MainScreen> {
                 ));
           },
           itemCount: myLectures.length,
-
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, '/scan'),
@@ -171,6 +169,11 @@ class _MainScreenState extends State<MainScreen> {
                   icon: const Icon(Icons.person_sharp),
                   onPressed: () {
                     Navigator.pushNamed(context, '/profile');
+                  }),
+              IconButton(
+                  icon: const Icon(Icons.leaderboard_rounded),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/lesson');
                   }),
               const Spacer(flex: 1),
             ],

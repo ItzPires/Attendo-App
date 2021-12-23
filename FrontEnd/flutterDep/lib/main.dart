@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uc_here/pages/init_page.dart';
 import 'package:uc_here/pages/landing.dart';
+import 'package:uc_here/pages/lesson.dart';
 import 'dart:ui';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -110,7 +111,6 @@ class _MyAppState extends State<MyApp> {
             fontSize: 12,
             letterSpacing: 0,
           ),
-
           headline4: GoogleFonts.robotoCondensed(
             color: Colors.black,
             wordSpacing: 1,
@@ -139,6 +139,7 @@ class _MyAppState extends State<MyApp> {
         '/validate': (context) => const ValidatePage(),
         '/profile': (context) => const MyProfile(),
         '/about_us': (context) => const AboutUsPage(),
+        '/lesson': (context) => const Lesson(),
       },
       debugShowCheckedModeBanner: false,
     );
