@@ -73,7 +73,7 @@ class _MyProfileState extends State<MyProfile> {
                 children: [
                   Padding(
                     child: Center(
-                      child: templateImage(),
+                      child: templateImage(getInitials(me!.name)),
                     ),
                     padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
                   ),
@@ -155,7 +155,7 @@ class _MyProfileState extends State<MyProfile> {
               children: [
                 Padding(
                   child: Center(
-                    child: templateImage(),
+                    child: templateImage(getInitials(me!.name)),
                   ),
                   padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
                 ),
@@ -317,13 +317,13 @@ class _MyProfileState extends State<MyProfile> {
   }
 }
 
-Widget templateImage() {
+Widget templateImage(String input) {
   return CircleAvatar(
     backgroundColor: Colors.blue,
     child: FittedBox(
       fit: BoxFit.fill,
       child: Text(
-        getInitials(me!.name),
+        input,
         softWrap: true,
         style: const TextStyle(color: Colors.black),
         textScaleFactor: 2,

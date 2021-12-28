@@ -8,6 +8,7 @@ import 'package:uc_here/models/user.dart';
 String apiURLTest = "http://10.3.3.109/";
 User? me;
 List<Lecture> myLectures = [];
+bool dark = false;
 
 class DrawLogo extends StatelessWidget {
   const DrawLogo({Key? key}) : super(key: key);

@@ -5,6 +5,7 @@ import 'package:uc_here/const/constants.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uc_here/models/lecture.dart';
 
 import 'dart:math';
 
@@ -48,6 +49,8 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
+    myLectures.sort((a, b) => a.begin.compareTo(b.begin));
+
     return GestureDetector(
       child: Scaffold(
         appBar: AppBar(
@@ -59,14 +62,17 @@ class _MainScreenState extends State<MainScreen> {
           centerTitle: false,
         ),
         body: SingleChildScrollView(
-            child: Column(children: [
+            child: Column(mainAxisSize: MainAxisSize.min, children: [
           Padding(
               padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
               child: Text(
                 "As Minhas Aulas",
                 style: Theme.of(context).textTheme.headline4,
               )),
-          ListView.builder(
+          Flexible(
+              child: ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
             itemBuilder: (context, i) {
               return Padding(
                   padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
@@ -116,7 +122,7 @@ class _MainScreenState extends State<MainScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Padding(
                                   padding: EdgeInsets.fromLTRB(
@@ -128,11 +134,77 @@ class _MainScreenState extends State<MainScreen> {
                                     myLectures[i].subject,
                                     textAlign: TextAlign.start,
                                     style: GoogleFonts.roboto(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                      letterSpacing: 0,
-                                    ),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        letterSpacing: 0,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(
+                                      MediaQuery.of(context).size.width * 0.015,
+                                      0,
+                                      0,
+                                      0),
+                                  child: Text(
+                                    myLectures[i].department,
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        letterSpacing: 0,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface
+                                            .withOpacity(0.5)),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(
+                                      MediaQuery.of(context).size.width * 0.015,
+                                      0,
+                                      0,
+                                      0),
+                                  child: Text(
+                                    myLectures[i].classroom,
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        letterSpacing: 0,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface
+                                            .withOpacity(0.5)),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(
+                                      MediaQuery.of(context).size.width * 0.015,
+                                      0,
+                                      0,
+                                      0),
+                                  child: Text(
+                                    myLectures[i]
+                                            .begin
+                                            .toString()
+                                            .substring(0, 16) +
+                                        " - " +
+                                        myLectures[i]
+                                            .end
+                                            .toString()
+                                            .substring(11, 16),
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        letterSpacing: 0,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface
+                                            .withOpacity(0.5)),
                                   ),
                                 )
                               ],
@@ -146,17 +218,20 @@ class _MainScreenState extends State<MainScreen> {
                     onPressed: () => {
                       setState(() {
                         saveDataBeta();
-                        myLectures[i].presenceChecked =
-                            !myLectures[i].presenceChecked;
+                        Navigator.pushNamed(context, "/lesson",
+                            arguments: myLectures[i]);
                       })
                     },
                   ));
             },
             itemCount: myLectures.length,
-          )
+          ))
         ])),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.pushNamed(context, '/scan'),
+          onPressed: () => Navigator.pushNamed(context, '/scan').then((_) {
+            // This block runs when you have returned back to the 1st Page from 2nd.
+            setState(() {});
+          }),
           tooltip: 'Scan Class QR Code',
           child: const Icon(Icons.qr_code_scanner),
         ),
@@ -305,7 +380,7 @@ class _MenuPageState extends State<MenuPage> {
                           "/about_us")),
                   Padding(
                     padding: EdgeInsets.fromLTRB(0,
-                        MediaQuery.of(context).size.shortestSide * 0.70, 0, 0),
+                        MediaQuery.of(context).size.shortestSide * 0.50, 0, 0),
                     child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
                             primary: const Color(0x00000000),

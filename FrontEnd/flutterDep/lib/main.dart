@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:uc_here/pages/init_page.dart';
 import 'package:uc_here/pages/landing.dart';
+import 'package:uc_here/pages/lesson.dart';
 import 'dart:ui';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'const/constants.dart';
 import 'pages/login_page.dart';
 import 'pages/qr_creator.dart';
 import 'pages/qr_scanner.dart';
@@ -25,7 +27,6 @@ import 'pages/profile.dart';
 
 // Container - Calendário
 // Container - Lista de a fazer
-
 
 void main() async {
   setPathUrlStrategy();
@@ -49,6 +50,9 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    if (ThemeMode.system == ThemeMode.dark) {
+      dark = true;
+    }
     return MaterialApp(
       title: 'Attendo',
       darkTheme: ThemeData(
@@ -126,7 +130,7 @@ class _MyAppState extends State<MyApp> {
           elevation: 10,
         ),
       ),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       initialRoute: '/',
       routes: {
         '/': (context) => Landing(),
@@ -138,6 +142,7 @@ class _MyAppState extends State<MyApp> {
         '/validate': (context) => const ValidatePage(),
         '/profile': (context) => const MyProfile(),
         '/about_us': (context) => const AboutUsPage(),
+        '/lesson': (context) => const Lesson(),
       },
       debugShowCheckedModeBanner: false,
     );

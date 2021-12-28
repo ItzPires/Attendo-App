@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class Lecture {
+class Lecture implements Comparable<Lecture> {
   String subject;
   String abbreviation;
   String classroom;
@@ -46,4 +46,7 @@ class Lecture {
       (json.decode(musics) as List<dynamic>)
           .map<Lecture>((item) => Lecture.fromJson(item))
           .toList();
+
+  @override
+  int compareTo(Lecture other) => begin.compareTo(other.begin);
 }

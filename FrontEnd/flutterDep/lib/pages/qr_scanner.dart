@@ -14,23 +14,15 @@ class ScanPage extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _ScanPageState extends State<ScanPage> {
-  QRViewController? qrController;
+  late QRViewController qrController;
   GlobalKey qRKey = GlobalKey(debugLabel: 'Qr');
-  CameraFacing cameraOrient = CameraFacing.back;
+  bool cameraOrientBack = true;
+  bool flashOn = false;
+  int count = 0;
   @override
   void dispose() {
-    qrController?.dispose();
     super.dispose();
-  }
-
-  //USED FOR HOT RELOAD ONLY
-  @override
-  void reassemble() async {
-    super.reassemble();
-    if (Platform.isAndroid) {
-      await qrController!.pauseCamera();
-    }
-    qrController!.resumeCamera();
+    qrController.dispose();
   }
 
   @override
@@ -43,7 +35,7 @@ class _ScanPageState extends State<ScanPage> {
         Positioned(
           child: FloatingActionButton(
             onPressed: () => {Navigator.pop(context)},
-            tooltip: 'Scan QR Code',
+            tooltip: 'Voltar',
             child: const Icon(
               Icons.arrow_back,
               color: Color(0xFFFFFFFF),
@@ -56,19 +48,9 @@ class _ScanPageState extends State<ScanPage> {
           left: 20,
         ),
         Positioned(
-          child: IconButton(
-              iconSize: 50,
-              onPressed: () {
-                setState(() {
-                  if (cameraOrient == CameraFacing.back) {
-                    cameraOrient = CameraFacing.front;
-                  } else {
-                    cameraOrient = CameraFacing.back;
-                  }
-                });
-              },
-              icon: const Icon(Icons.cameraswitch_outlined)),
+          right: 20,
           bottom: 30,
+          child: buildFlash(),
         )
       ],
     ));
@@ -78,9 +60,9 @@ class _ScanPageState extends State<ScanPage> {
     return QRView(
       key: qRKey,
       onQRViewCreated: viewQRCode,
-      cameraFacing: cameraOrient,
       formatsAllowed: const [BarcodeFormat.qrcode],
       overlay: QrScannerOverlayShape(
+        cutOutBottomOffset: 10,
         borderLength: MediaQuery.of(context).size.shortestSide * 0.13,
         borderRadius: MediaQuery.of(context).size.shortestSide * 0.1,
         borderWidth: MediaQuery.of(context).size.shortestSide * 0.03,
@@ -95,9 +77,39 @@ class _ScanPageState extends State<ScanPage> {
       this.qrController = qrController;
     });
     qrController.scannedDataStream.listen((barcode) {
-      Navigator.pushReplacementNamed(context, "/validate",
-          arguments: barcode.code);
-      dispose();
+      if (count == 0) {
+        Navigator.pushReplacementNamed(context, "/validate",
+            arguments: barcode.code);
+        count++;
+      }
     });
+  }
+
+  Widget buildFlash() {
+    if (!cameraOrientBack) {
+      return const Spacer();
+    }
+
+    if (flashOn) {
+      return IconButton(
+          iconSize: 50,
+          onPressed: () {
+            setState(() {
+              qrController.toggleFlash();
+
+              flashOn = !flashOn;
+            });
+          },
+          icon: const Icon(Icons.flash_off_outlined));
+    }
+    return IconButton(
+        iconSize: 50,
+        onPressed: () {
+          setState(() {
+            qrController.toggleFlash();
+            flashOn = !flashOn;
+          });
+        },
+        icon: const Icon(Icons.flash_on_outlined));
   }
 }
