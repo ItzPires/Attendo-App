@@ -42,8 +42,6 @@ class _QRCodeGenState extends State<QRCodeGen> {
       File imgFile = File(directory + '/photo.png');
       await imgFile.writeAsBytes(pngBytes);
     }
-
-    print(pngBytes);
   }
 
   @override

@@ -15,6 +15,16 @@ class User {
     return name + " " + mail;
   }
 
+  static Map<String, dynamic> toMap(User users) => {
+        'name': users.name,
+        'mail': users.mail,
+        'aboutMe': users.aboutMe,
+        'number': users.number,
+        'id': users.id,
+        'authToken': users.authToken,
+        'isTeacher': users.isTeacher,
+      };
+
   set setAboutMe(String aboutMe) => this.aboutMe = aboutMe;
   User.fromJson(Map<String, dynamic> json)
       : name = json["name"],

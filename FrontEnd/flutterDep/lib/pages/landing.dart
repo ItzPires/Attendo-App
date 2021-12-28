@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uc_here/apiCalls/login.dart';
+import 'package:uc_here/beta.dart';
 import 'package:uc_here/const/constants.dart';
 import 'package:uc_here/models/api_response.dart';
 import 'package:uc_here/models/user.dart';
@@ -64,11 +65,14 @@ class _LandingState extends State<Landing> {
         ),
         backgroundColor: Colors.white,
         body: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-              DrawLogo(),
-              CircularProgressIndicator(),
-            ])));
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          DrawLogo(),
+          CircularProgressIndicator(),
+          ElevatedButton.icon(
+              onPressed: () => deleteDataBeta(),
+              icon: Icon(Icons.refresh_outlined),
+              label: Text("Reset"))
+        ])));
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uc_here/beta.dart';
 import 'package:uc_here/const/constants.dart';
 import 'package:uc_here/models/api_response.dart';
@@ -9,15 +10,23 @@ import 'package:uc_here/models/user.dart';
 Future<ApiResponseLogin> authenticateUser(String email, String password) async {
   ApiResponseLogin _apiResponse = ApiResponseLogin();
   try {
-    if (email == "uc2024456789@student.uc.pt" && password == "demo") {
-      _apiResponse.Data = User(
-          "Conta Demonstração",
-          "uc2024456789@student.uc.pt",
-          2024456789,
-          "Sou uma conta de demonstração Feliz :)",
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDAyNzY1Nzh9.ojpNV9Pl-DJUx7N9o0ITYFAkdylifybdDLmvVrVu1u4",
-          false,
-          -1);
+    //Beta Testing
+    if (email == "uc2024123456@student.uc.pt" && password == "demo") {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? userData = prefs.getString("betaUser");
+
+      if (userData == null) {
+        _apiResponse.Data = User(
+            "Conta Demonstração",
+            "uc2024123456@student.uc.pt",
+            2024456789,
+            "Sou uma conta de demonstração Feliz :)",
+            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDAyNzY1Nzh9.ojpNV9Pl-DJUx7N9o0ITYFAkdylifybdDLmvVrVu1u4",
+            false,
+            -1);
+      } else {
+        _apiResponse.Data = User.fromJson(json.decode(userData));
+      }
       _apiResponse.ApiError = "";
       initBeta();
       me = _apiResponse.Data;

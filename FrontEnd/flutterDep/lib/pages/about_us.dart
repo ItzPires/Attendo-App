@@ -53,7 +53,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
       ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
-        notchMargin: 2,
+        notchMargin: 4,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.max,
@@ -103,7 +103,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
             ),
           ),
           Padding(
-              padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
               child: Text(
                 "Attendo é uma aplicação desenvolvida por um grupo de estudantes do 3ºano de Engenharia Informática da Universidade de Coimbra no âmbito da cadeira de Processos de Gestão e de Inovação.",
                 style: Theme.of(context).textTheme.bodyText1,

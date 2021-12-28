@@ -20,12 +20,12 @@ import 'pages/profile.dart';
 // VERSAO WEB!
 
 // - About Us
-
 // - Menu Esquerda
 // - Menu central - AGENDA de aulas
 
 // Container - Calendário
 // Container - Lista de a fazer
+
 
 void main() async {
   setPathUrlStrategy();

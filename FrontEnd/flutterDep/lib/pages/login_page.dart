@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uc_here/apiCalls/login.dart';
 import 'package:uc_here/const/constants.dart';
 import 'package:uc_here/models/api_response.dart';
+import 'package:uc_here/models/lecture.dart';
 import 'package:uc_here/models/user.dart';
 
 import '../beta.dart';
@@ -136,11 +137,13 @@ class _LoginPageState extends State<LoginPage> {
                                 BorderRadius.all(Radius.circular(20))),
                       ),
                       onPressed: () async {
-                        email = "uc2024456789@student.uc.pt";
+                        email = "uc2024123456@student.uc.pt";
                         password = "demo";
+
                         _apiResponse = await authenticateUser(email, password);
+
                         betaTest = true;
-                        myLectures = initBeta();
+
                         _saveAndRedirectToHome();
                       },
                       icon: const Icon(
