@@ -26,7 +26,7 @@ void initBeta() async {
         "14619989419635733995098346312717019105"));
     //2
     betaList.add(Lecture(
-        "Introdução á Programação e Resolução de Problemas",
+        "Introdução à Programação e Resolução de Problemas",
         "IPRP",
         "E5.3",
         "Rui Pedro Pinto de Carvalho e Paiva",

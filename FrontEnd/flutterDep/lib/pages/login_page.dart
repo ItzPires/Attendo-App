@@ -156,13 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.only(
                     left: 30.0, right: 30.0, top: 80, bottom: 0),
                 child: TextButton(
-                  onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      '/home',
-                      ModalRoute.withName('/home'),
-                    );
-                  },
+                  onPressed: () {},
                   child: Text(
                     'Criar Conta',
                     style: TextStyle(

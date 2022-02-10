@@ -157,7 +157,7 @@ class _InitPageState extends State<InitPage> {
                     ),
                   ),
                 ]),
-                titleWidget: Spacer(flex: 1),
+                title: "",
                 image: Padding(
                   padding: EdgeInsets.fromLTRB(
                       0, 0, 0, MediaQuery.of(context).size.height / 20),
