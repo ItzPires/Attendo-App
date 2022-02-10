@@ -5,8 +5,8 @@ import 'package:uc_here/const/constants.dart';
 import 'package:uc_here/models/api_response.dart';
 import 'package:uc_here/models/user.dart';
 
-Future<ApiResponse> authenticateUser(String email, String password) async {
-  ApiResponse _apiResponse = ApiResponse();
+Future<ApiResponseLogin> authenticateUser(String email, String password) async {
+  ApiResponseLogin _apiResponse = ApiResponseLogin();
   try {
     final response = await http.post(
       Uri.parse(apiURLTest + "login/"),

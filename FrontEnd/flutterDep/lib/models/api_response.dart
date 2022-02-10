@@ -1,6 +1,6 @@
 import 'package:uc_here/models/user.dart';
 
-class ApiResponse {
+class ApiResponseLogin {
   late User _data;
   String? _apiError;
 
