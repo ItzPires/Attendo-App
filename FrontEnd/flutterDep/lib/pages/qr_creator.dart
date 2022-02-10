@@ -5,7 +5,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:path_provider/path_provider.dart';
+//import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'dart:math';
@@ -21,7 +21,7 @@ class QRCodeGen extends StatefulWidget {
 
 class _QRCodeGenState extends State<QRCodeGen> {
   GlobalKey genKey = GlobalKey();
-
+  /*
   Future<void> takePicture() async {
     RenderRepaintBoundary boundary =
         genKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
@@ -42,10 +42,8 @@ class _QRCodeGenState extends State<QRCodeGen> {
       File imgFile = File(directory + '/photo.png');
       await imgFile.writeAsBytes(pngBytes);
     }
-
-    print(pngBytes);
   }
-
+  */
   @override
   Widget build(BuildContext context) {
     var class_id = ModalRoute.of(context)!.settings.arguments;
@@ -86,7 +84,7 @@ class _QRCodeGenState extends State<QRCodeGen> {
                                   )))),
                       ElevatedButton(
                           onPressed: () async {
-                            await takePicture();
+                            //await takePicture();
                           },
                           child: Text("Exportar"))
                     ]);

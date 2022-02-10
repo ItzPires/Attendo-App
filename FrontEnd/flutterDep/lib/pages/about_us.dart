@@ -53,7 +53,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
       ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
-        notchMargin: 2,
+        notchMargin: 4,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.max,
@@ -103,7 +103,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
             ),
           ),
           Padding(
-              padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
               child: Text(
                 "Attendo é uma aplicação desenvolvida por um grupo de estudantes do 3ºano de Engenharia Informática da Universidade de Coimbra no âmbito da cadeira de Processos de Gestão e de Inovação.",
                 style: Theme.of(context).textTheme.bodyText1,
@@ -138,21 +138,20 @@ class _AboutUsPageState extends State<AboutUsPage> {
                           isRepeatingAnimation: true,
                           repeatForever: true,
                         )),
-                    DrawPerson("Adriana Bernardo", "Adriana",
+                    drawPerson("Adriana Bernardo", "Adriana",
                         "A única rapariga do grupo, não gosta de programar e tem mau feitio.\nGosta de preencher e de completar templates, assim como tratar das redes sociais.\nDeu origem à ideia que depois foi refinada pelo resto da equipa.\nPor ela a aplicação seria full cor-de-rosa."),
-                    DrawPerson("Pedro Duarte", "Duarte",
-
-                    DrawPerson(
-                        "Fábio Vaqueiro", "fabio", "O Fábio é um Mongoloide"),
-                    DrawPerson("Pedro Mendes", "mendes",
-                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
-
-                    DrawPerson("Samuel Pires", "sam",
-                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
-                    DrawPerson("Pedro Chaves", "Chaves",
-                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
-                    DrawPerson("João Fernandes", "joao",
-                        "O Professor gera um QR Code através do site e na aula partilha-o com os alunos."),
+                    drawPerson("Pedro Duarte", "Duarte",
+                        "O cérebro das operações da equipa, que só pára quando a aplicação estiver perfeita!\nEstá sempre muito aplicado e quer que tudo corra na perfeição.\nTem sempre boas ideias e ultimamente tem se armado em designer (está a sair-se muito bem)."),
+                    drawPerson("Fábio Vaqueiro", "fabio",
+                        "O elemento do grupo que anda sempre atrasado, contudo a sua presença é sempre bem-vinda, uma vez que é o brincalhão.\nQuando tem tempo gosta de dormir muito, mas os desafios levam-no às imensas diretas produtivas.\nAtualmente é um dos desenvolvedores e para ele a simplicidade marca sempre a presença!"),
+                    drawPerson("Pedro Mendes", "mendes",
+                        "Sonhava desde pequenino fazer uma aplicação para marcar presenças.\n No seu tempo livre gosta de fingir que sabe programar em C.\nSe não fosse daltónico, a aplicação seria azul.\nNo futuro espera viver com a sua esposa, 2 cães e 2 furões, enquanto investe em imobiliário."),
+                    drawPerson("Samuel Pires", "sam",
+                        "print(\"O avô do grupo, queria ser TikToker, mas o destino levou-o para outro caminho.\nAgora é um dos desenvolvedores.\")"),
+                    drawPerson("Pedro Chaves", "Chaves",
+                        "Veio de \"Espanha\" para se tornar informático e está agora a tentar conquistar o mercado de presenças português.\nQuem sabe se no futuro não irá conquistar tambem o mercado do seu país!"),
+                    drawPerson("João Fernandes", "joao",
+                        "O João é muito simples!\nÉ aluno da cadeira de Processos de Gestão e de Inovação e adora-a!"),
                   ],
                 )),
           ),
@@ -169,7 +168,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                 MediaQuery.of(context).size.width * 0.09,
                 5),
             child: Text(
-              "Aviso legal: os conteúdos constantes desta aplicação foram realizados por alunos no âmbito de uma disciplina– Processos de Gestão e Inovação - do 3º ano da licenciatura de Engenharia Informática da Faculdade de Ciências e Tecnologia da Universidade de Coimbra (FCTUC), pelo que a FCTUC não se responsabiliza pelo seu conteúdo.",
+              "Aviso legal: os conteúdos constantes desta aplicação foram realizados por alunos no âmbito de uma disciplina - Processos de Gestão e Inovação - do 3º ano da licenciatura de Engenharia Informática da Faculdade de Ciências e Tecnologia da Universidade de Coimbra (FCTUC), pelo que a FCTUC não se responsabiliza pelo seu conteúdo.",
               style: Theme.of(context).textTheme.caption,
               textAlign: TextAlign.center,
             ),
@@ -179,7 +178,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
     );
   }
 
-  Widget DrawPerson(String name, String photo, String description) {
+  Widget drawPerson(String name, String photo, String description) {
     return Container(
       padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.05, 0,
           MediaQuery.of(context).size.width * 0.05, 0),

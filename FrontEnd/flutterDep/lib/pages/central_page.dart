@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uc_here/const/constants.dart';
 
-import 'package:uc_here/pages/profile.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uc_here/models/lecture.dart';
 
 import 'dart:math';
+
+import '../beta.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -32,6 +34,7 @@ class _MainPageState extends State<MainPage> {
         borderRadius: 24.0,
         menuScreen: const MenuPage(),
         mainScreen: const MainScreen(),
+        clipMainScreen: true,
         slideWidth: MediaQuery.of(context).size.width * 0.70);
   }
 }
@@ -44,20 +47,10 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  List<String> lectures = [];
-
-  @override
-  void initState() {
-    super.initState();
-    lectures.add('aula');
-    lectures.add('aula1');
-    lectures.add('aula2');
-  }
-
   @override
   Widget build(BuildContext context) {
-    print("aulas: ");
-    print(lectures.length);
+    myLectures.sort((a, b) => a.begin.compareTo(b.begin));
+
     return GestureDetector(
       child: Scaffold(
         appBar: AppBar(
@@ -68,95 +61,184 @@ class _MainScreenState extends State<MainScreen> {
           ),
           centerTitle: false,
         ),
-
-        body: ListView.builder(
-          itemBuilder: (context, i) {
-            if (i == 0) myLectures[i].presence_checked = true;
-            return Padding(
-                padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-                child: ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                      primary: const Color(0x00000000),
-                      shadowColor: Colors.black26,
-                      elevation: 2,
-                      alignment: Alignment.centerLeft,
-                      fixedSize: Size(MediaQuery.of(context).size.width,
-                          MediaQuery.of(context).size.height * 0.15),
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(width: 2, color: Colors.black45),
-                          borderRadius: BorderRadius.circular(10))),
-                  icon: Container(
-                      width: MediaQuery.of(context).size.shortestSide * 0.15,
-                      child: FittedBox(
-                        child: Text.rich(
-                          TextSpan(
-                            text: myLectures[i].abbreviation,
-                            style: GoogleFonts.robotoCondensed(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 35,
-                                letterSpacing: 0,
-                                color: Theme.of(context).colorScheme.onSurface),
+        body: SingleChildScrollView(
+            child: Column(mainAxisSize: MainAxisSize.min, children: [
+          Padding(
+              padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+              child: Text(
+                "As Minhas Aulas",
+                style: Theme.of(context).textTheme.headline4,
+              )),
+          Flexible(
+              child: ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemBuilder: (context, i) {
+              return Padding(
+                  padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                        primary: const Color(0x00000000),
+                        shadowColor: Colors.black26,
+                        elevation: 2,
+                        alignment: Alignment.center,
+                        fixedSize: Size.fromHeight(
+                            MediaQuery.of(context).size.longestSide * 0.15),
+                        shape: RoundedRectangleBorder(
+                            side: const BorderSide(
+                                width: 2, color: Colors.black45),
+                            borderRadius: BorderRadius.circular(10))),
+                    icon: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.15,
+                        child: FittedBox(
+                          child: Text.rich(
+                            TextSpan(
+                              text: myLectures[i].abbreviation,
+                              style: GoogleFonts.robotoCondensed(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 35,
+                                  letterSpacing: 0,
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface),
+                            ),
                           ),
-                        ),
-                        fit: BoxFit.scaleDown,
-                      )),
-                  label: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const VerticalDivider(
-                          endIndent: 10,
-                          indent: 10,
-                          color: Colors.black38,
-                          thickness: 1,
-                          width: 2,
-                        ),
-                        Container(
-                          width:
-                              MediaQuery.of(context).size.shortestSide * 0.615,
-                          padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(
-                                    MediaQuery.of(context).size.shortestSide *
-                                        0.015,
-                                    0,
-                                    0,
-                                    0),
-                                child: Text(
-                                  myLectures[i].subject,
-                                  textAlign: TextAlign.start,
-                                  style: GoogleFonts.roboto(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    letterSpacing: 0,
+                          fit: BoxFit.scaleDown,
+                        )),
+                    label: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const VerticalDivider(
+                            endIndent: 10,
+                            indent: 10,
+                            color: Colors.black38,
+                            thickness: 1,
+                            width: 0,
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.62,
+                            padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(
+                                      MediaQuery.of(context).size.width * 0.015,
+                                      0,
+                                      0,
+                                      0),
+                                  child: Text(
+                                    myLectures[i].subject,
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        letterSpacing: 0,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface),
                                   ),
                                 ),
-                              )
-                            ],
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(
+                                      MediaQuery.of(context).size.width * 0.015,
+                                      0,
+                                      0,
+                                      0),
+                                  child: Text(
+                                    myLectures[i].department,
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        letterSpacing: 0,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface
+                                            .withOpacity(0.5)),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(
+                                      MediaQuery.of(context).size.width * 0.015,
+                                      0,
+                                      0,
+                                      0),
+                                  child: Text(
+                                    myLectures[i].classroom,
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        letterSpacing: 0,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface
+                                            .withOpacity(0.5)),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(
+                                      MediaQuery.of(context).size.width * 0.015,
+                                      0,
+                                      0,
+                                      0),
+                                  child: Text(
+                                    myLectures[i]
+                                            .begin
+                                            .toString()
+                                            .substring(0, 16) +
+                                        " - " +
+                                        myLectures[i]
+                                            .end
+                                            .toString()
+                                            .substring(11, 16),
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        letterSpacing: 0,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface
+                                            .withOpacity(0.5)),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        drawIconClass(myLectures[i].presence_checked)
-                      ]),
-                  onPressed: () => {},
-                ));
-          },
-          itemCount: myLectures.length,
-
-        ),
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.10,
+                              child:
+                                  drawIconClass(myLectures[i].presenceChecked))
+                        ]),
+                    onPressed: () => {
+                      setState(() {
+                        saveDataBeta();
+                        Navigator.pushNamed(context, "/lesson",
+                            arguments: myLectures[i]);
+                      })
+                    },
+                  ));
+            },
+            itemCount: myLectures.length,
+          ))
+        ])),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.pushNamed(context, '/scan'),
+          onPressed: () => Navigator.pushNamed(context, '/scan').then((_) {
+            // This block runs when you have returned back to the 1st Page from 2nd.
+            setState(() {});
+          }),
           tooltip: 'Scan Class QR Code',
           child: const Icon(Icons.qr_code_scanner),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
           shape: const CircularNotchedRectangle(),
-          notchMargin: MediaQuery.of(context).size.width * 0.009,
+          notchMargin: MediaQuery.of(context).size.width * 0.01,
           child: Row(
             children: [
               const Spacer(
@@ -211,6 +293,7 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> {
   //TO USE
   void _handleLogout() async {
+    deleteDataBeta();
     me = null;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove('userMail');
@@ -227,6 +310,7 @@ class _MenuPageState extends State<MenuPage> {
     return Scaffold(
         body: Container(
             width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
                 gradient: LinearGradient(
               begin: const Alignment(0, 1),
@@ -238,14 +322,15 @@ class _MenuPageState extends State<MenuPage> {
               ],
             )),
             child: SafeArea(
+                child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                       padding: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width * 0.05,
-                          MediaQuery.of(context).size.height * 0.05,
+                          MediaQuery.of(context).size.shortestSide * 0.05,
+                          MediaQuery.of(context).size.longestSide * 0.10,
                           0,
                           0),
                       child: Text.rich(TextSpan(children: [
@@ -275,24 +360,27 @@ class _MenuPageState extends State<MenuPage> {
                         ),
                       ]))),
                   Padding(
-                      padding: EdgeInsets.fromLTRB(
-                          0, MediaQuery.of(context).size.width * 0.1, 0, 0),
+                      padding: EdgeInsets.fromLTRB(0,
+                          MediaQuery.of(context).size.shortestSide * 0.1, 0, 0),
                       child: drawButton(
                           "Meu Perfil",
-                          MediaQuery.of(context).size.width * 0.45,
+                          MediaQuery.of(context).size.shortestSide * 0.45,
                           Icons.person_outline,
                           "/profile")),
                   Padding(
                       padding: EdgeInsets.fromLTRB(
-                          0, MediaQuery.of(context).size.width * 0.03, 0, 0),
+                          0,
+                          MediaQuery.of(context).size.shortestSide * 0.03,
+                          0,
+                          0),
                       child: drawButton(
                           "Sobre Nós",
-                          MediaQuery.of(context).size.width * 0.50,
+                          MediaQuery.of(context).size.shortestSide * 0.50,
                           Icons.people_outline,
                           "/about_us")),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(
-                        0, MediaQuery.of(context).size.width * 0.70, 0, 0),
+                    padding: EdgeInsets.fromLTRB(0,
+                        MediaQuery.of(context).size.shortestSide * 0.50, 0, 0),
                     child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
                             primary: const Color(0x00000000),
@@ -301,8 +389,8 @@ class _MenuPageState extends State<MenuPage> {
                             elevation: 0,
                             alignment: Alignment.centerLeft,
                             fixedSize: Size(
-                                MediaQuery.of(context).size.width * 0.50,
-                                MediaQuery.of(context).size.height * 0.06),
+                                MediaQuery.of(context).size.shortestSide * 0.50,
+                                MediaQuery.of(context).size.longestSide * 0.06),
                             shape: const RoundedRectangleBorder(
                                 side:
                                     BorderSide(width: 3, color: Colors.black45),
@@ -331,7 +419,7 @@ class _MenuPageState extends State<MenuPage> {
                   ),
                 ],
               ),
-            )));
+            ))));
   }
 
   Widget drawButton(String text, double width, IconData icon, String outpage) {
@@ -341,7 +429,8 @@ class _MenuPageState extends State<MenuPage> {
             shadowColor: Theme.of(context).colorScheme.onSurface,
             elevation: 0,
             alignment: Alignment.centerLeft,
-            fixedSize: Size(width, MediaQuery.of(context).size.height * 0.06),
+            fixedSize:
+                Size(width, MediaQuery.of(context).size.longestSide * 0.06),
             shape: const RoundedRectangleBorder(
                 side: BorderSide(width: 3, color: Colors.black45),
                 borderRadius: BorderRadius.only(
@@ -366,50 +455,5 @@ class _MenuPageState extends State<MenuPage> {
           await Future.delayed(const Duration(milliseconds: 250));
           Navigator.pushNamed(context, outpage);
         });
-  }
-}
-
-class LectureText extends StatelessWidget {
-  final List<String> lectures;
-  LectureText(this.lectures);
-  Widget lectureItem(BuildContext context, int index) {
-    return Card(
-        child: Row(
-      children: [
-        Column(children: [
-          //letra inicial
-          Text.rich(TextSpan(
-            text: " A",
-            style: GoogleFonts.rye(
-                fontWeight: FontWeight.bold,
-                fontSize: 80,
-                letterSpacing: 0,
-                color: Colors.black),
-          )),
-        ]),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
-          child: Column(
-            children: [
-              Text.rich(TextSpan(
-                //text: "Cadeira: \nHora | Sala\nPresença: (Por marcar/marcada)",
-                text: lectures[index],
-                style: GoogleFonts.abel(
-                    fontWeight: FontWeight.normal,
-                    fontSize: 21,
-                    letterSpacing: 0,
-                    color: Colors.black),
-              ))
-            ],
-          ),
-        )
-      ],
-    ));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        itemBuilder: lectureItem, itemCount: lectures.length);
   }
 }

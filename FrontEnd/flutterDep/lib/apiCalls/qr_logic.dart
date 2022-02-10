@@ -2,14 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:uc_here/const/constants.dart';
-import 'package:uc_here/models/user.dart';
 
-Future<String> getQrCode(String class_id) async {
+Future<String> getQrCode(String classId) async {
   String code = "";
 
   try {
     final response = await http.get(
-      Uri.parse(apiURLTest + "QrCode/" + class_id),
+      Uri.parse(apiURLTest + "QrCode/" + classId),
     );
 
     switch (response.statusCode) {
