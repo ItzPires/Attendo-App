@@ -1,11 +1,9 @@
 from django.http import response
-from django.shortcuts import render, resolve_url
 from django.http.response import JsonResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.db import connection, DatabaseError
 import json, os
-
 from .error import error
 class StudentViews():
     # API endpoint that allows student to be viewed.
@@ -13,10 +11,10 @@ class StudentViews():
     #List all Students/Add a new student
     @api_view(http_method_names=["GET", "POST"])
     def students_manage(request):
+
         with connection.cursor() as cursor:
             #Get all Students
             if(request.method == "GET"):
-    
                 cursor.execute("""SELECT numero, mail, nome,sobre_mim FROM ALUNO""")
                 data = cursor.fetchall()
                 response = []
@@ -43,6 +41,7 @@ class StudentViews():
         with connection.cursor() as cursor:
             #Get student with this number
             if(request.method == "GET"):
+
                 cursor.execute("""SELECT numero, mail, nome, sobre_mim FROM ALUNO WHERE numero = %s""", (number, ))
                 user = cursor.fetchone()
                 to_add = {"number":user[0], "mail":user[1], "name":user[2], "sobre_mim":user[3]}

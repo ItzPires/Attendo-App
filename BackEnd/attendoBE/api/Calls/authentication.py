@@ -31,8 +31,8 @@ class Authentication():
                         cursor.execute("""UPDATE aluno set logged_in = TRUE where id = %s""",(id,))
                         cursor.execute("""COMMIT""")
                         token = {'user_id': id, "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}
-                        result = jwt.encode(token,"adsadadasdfadgdgafdgdfsgfdgdfgsdfgfsdg", algorithm="HS256")
-                        result = {'authToken': result, 'isTeacher':is_teacher, 'number':numero, 'mail':mail, 'aboutMe':sobre_mim, 'name':nome}
+                        result = jwt.encode(token,os.getenv('SECRET_KEY'), algorithm="HS256")
+                        result = {'authToken': result, 'isTeacher':is_teacher, 'number':numero, 'mail':mail, 'aboutMe':sobre_mim, 'name':nome, 'id':id}
                 except:
                     is_teacher = True
                     statement = """SELECT mail, id, sobre_mim, nome FROM professor where mail = %s AND password is NOT NULL 
@@ -46,8 +46,8 @@ class Authentication():
                         cursor.execute("""UPDATE professor set logged_in = TRUE where id = %s""",(id, ))
                         cursor.execute("""COMMIT""")
                         token = {'user_id': id, "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}
-                        result = jwt.encode(token,"adsadadasdfadgdgafdgdfsgfdgdfgsdfgfsdg", algorithm="HS256")
-                        result = {'authToken': result, 'isTeacher':is_teacher, 'number':id, 'mail':mail, 'aboutMe':sobre_mim, 'name':nome}
+                        result = jwt.encode(token,os.getenv('SECRET_KEY'), algorithm="HS256")
+                        result = {'authToken': result, 'isTeacher':is_teacher, 'number':id, 'mail':mail, 'aboutMe':sobre_mim, 'name':nome, 'id':id}
                     else:
                         result = {'error':"Utilizador ou password incorretos"}
                         cursor.execute("""ROLLBACK""")
@@ -60,7 +60,7 @@ class Authentication():
     
     def authenticate(token):
         try:
-            id = jwt.decode(token, "adsadadasdfadgdgafdgdfsgfdgdfgsdfgfsdg", algorithms=["HS256"])
+            id = jwt.decode(token, os.getenv('SECRET_KEY'), algorithms=["HS256"])
             return True
         except jwt.ExpiredSignatureError:
             msg = 'Signature has expired.'

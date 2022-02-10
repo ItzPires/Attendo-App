@@ -17,7 +17,7 @@ class LectureViews():
             #Get lecture list
             if(request.method == "GET"):
                 cursor.execute("""SELECT * FROM aula""")
-                data = cursor.fectchall()
+                data = cursor.fetchall()
                 response = []
                 for user in data:
                     to_add = {"sala":user[1], "qrcode":user[2], "horario_id":user[3], "turma_id":user[4]}
@@ -63,3 +63,58 @@ class LectureViews():
                     return JsonResponse({'sucesso': 1})
                 except DatabaseError:
                     return JsonResponse(error("Unable to update lecture information"))
+
+    @api_view(http_method_names=["GET"])
+    def lecture_from_student(request, id):
+        #Get lecture with this number
+        emailStudent = id
+
+        try:
+            with connection.cursor() as cursor:
+                if(request.method == "GET"):
+                    cursor.execute("""SELECT * FROM aluno_turma WHERE aluno_id = %s""", (emailStudent, ))
+                    data = cursor.fetchall() #turma_id - onde o aluno esta
+                    response = []
+
+                    for turma in data:
+                        cursor.execute("""SELECT * FROM horario_semanal WHERE turma_id = %s""", (turma[1], ))
+                        classes = cursor.fetchall() #horarios da aula da turma
+
+                        cursor.execute("""SELECT cadeira_id FROM turma WHERE id = %s""", (turma[1], ))
+                        cadeiraId = cursor.fetchall() #id da cadeira
+
+                        cursor.execute("""SELECT nome FROM cadeira WHERE id = %s""", (cadeiraId[0][0], ))
+                        cadeiraName = cursor.fetchall() #nome da cadeira
+
+                        for horario in classes:
+                            to_add = {"aula": cadeiraName[0][0], "dia_de_semana": horario[1], "hora_de_inicio": horario[3], "hora_de_fim": horario[4], "sala": horario[2]}
+                            response.append(to_add)
+
+                    return Response(response)
+        except:
+            return JsonResponse(error("Unable to update lecture information"))
+
+    @api_view(http_method_names=["GET"])
+    def lecture_from_teacher(request):
+        #Get lecture with this number
+        login_user = json.loads(request.body)
+        emailTeacher = login_user['id']
+
+        with connection.cursor() as cursor:
+            if(request.method == "GET"):
+                cursor.execute("""SELECT * FROM turma WHERE professor_id = %s""", (emailTeacher, ))
+                data = cursor.fetchall() #turma - onde o stor esta
+
+                response = []
+
+                for turma in data:
+                    cursor.execute("""SELECT * FROM horario_semanal WHERE turma_id = %s""", (turma[0], ))
+                    classes = cursor.fetchall() #horarios da aula da turma
+
+                    cursor.execute("""SELECT nome FROM cadeira WHERE id = %s""", (turma[3], ))
+                    cadeiraName = cursor.fetchall() #nome da cadeira
+
+                    for horario in classes:
+                        to_add = {"aula": cadeiraName[0][0], "dia_de_semana": horario[1], "hora_de_inicio": horario[3], "hora_de_fim": horario[4], "sala": horario[2]}
+                        response.append(to_add)
+                return Response(response)

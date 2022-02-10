@@ -5,7 +5,7 @@
 
 ## MUDAR VERSÂO FINAL
 
-psql -h host.docker.internal -p 5432 -d attendo -U attendo
+psql -h db -p 5432 -d attendo -U attendo
 
 attendo
 
