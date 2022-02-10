@@ -1,3 +1,4 @@
+from django.http import response
 from django.shortcuts import render
 from django.http.response import JsonResponse
 import json
@@ -11,4 +12,4 @@ from django.db import connection, DatabaseError
 
 
 def index(render):
-    return Response('<h1>We are ATTENDO</h1>')
+    return response('<h1>We are ATTENDO</h1>')

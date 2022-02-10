@@ -8,7 +8,6 @@ RUN pip install django
 
 RUN pip install psycopg2-binary
 
-RUN pip install gunicorn
 
 RUN pip install djangorestframework
 
@@ -16,6 +15,7 @@ RUN pip install django-cors-headers
 
 RUN pip install pyjwt
 
+RUN pip install apscheduler
 
 COPY . /attendoBE
 

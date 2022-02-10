@@ -28,8 +28,13 @@ INSERT INTO turma(nome, professor_id, cadeira_id)
 VALUES ('Teorico prática 1', 1, 1); --???? IDS
 
 -- Horário da turma
-INSERT INTO horario_semanal(dia_semana, hora_de_inicio, hora_de_fim, turma_id)
-VALUES ('Quinta', TIME '18:00:00', TIME '20:00:00', 1);
+INSERT INTO horario_semanal(dia_semana, hora_de_inicio, hora_de_fim, turma_id, sala)
+VALUES (5, TIME '18:00:00', TIME '20:00:00', 1, 'C5.1');
+
+-- Aula da Turma
+INSERT INTO aula(horario_id, turma_id)
+VALUES (1, 1);
+
 
 -- Aluno Turma
 INSERT INTO aluno_turma(aluno_id, turma_id)

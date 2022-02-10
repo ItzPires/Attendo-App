@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+ 
     'api'
 ]
 
@@ -80,12 +81,11 @@ WSGI_APPLICATION = 'attendoBE.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        #TODO 
         'NAME': os.getenv('DATABASE_NAME'),
         'USER': os.getenv('DATABASE_USERNAME'),
         'PASSWORD': os.getenv('DATABASE_PASSWORD'),
         'HOST': os.getenv('DATABASE_HOST'),
-        'PORT':int( os.getenv('DATABASE_PORT')),
+        'PORT':(os.getenv('DATABASE_PORT')),
     }
 }
 

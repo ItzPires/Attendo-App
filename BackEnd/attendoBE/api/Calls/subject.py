@@ -17,7 +17,7 @@ class SubjectViews():
             #Get Subject list
             if(request.method == "GET"):
                 cursor.execute("""SELECT * FROM cadeira""")
-                data = cursor.fectchall()
+                data = cursor.fetchall()
                 response = []
                 for user in data:
                     to_add = {"nome":user[1], "ano":user[2], "curso":user[3], "departamento":user[4], "universidade":user[5], "professor(id)":user[6]}

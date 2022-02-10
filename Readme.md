@@ -1,1 +1,2 @@
-# Attendo App
+# Projeto de aplicação Attendo
+

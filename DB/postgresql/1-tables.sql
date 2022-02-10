@@ -34,10 +34,10 @@ CREATE TABLE professor (
 
 CREATE TABLE aula (
 	id 					SERIAL,
-	sala			 	VARCHAR(512) NOT NULL,
-	qrcode			 	BIGINT UNIQUE,
+	qrcode			 	VARCHAR(512),
 	horario_id	 		INTEGER NOT NULL,
 	turma_id 			INTEGER NOT NULL,
+	dia 				DATE,
 	PRIMARY KEY(id)
 );
 
@@ -48,10 +48,13 @@ CREATE TABLE presenca (
 
 CREATE TABLE horario_semanal (
 	id		 			SERIAL,
-	dia_semana	 		VARCHAR(512) NOT NULL,
+	-- Dia da semana varia de 1 -> Domingo até 7 -> Segunda feira
+	dia_semana	 		INTEGER NOT NULL,
+	sala			 	VARCHAR(512) NOT NULL,
 	hora_de_inicio		TIME NOT NULL,
 	hora_de_fim	 		TIME NOT NULL,
 	turma_id	 		INTEGER NOT NULL,
+	dia_ultima_guardada DATE,
 	PRIMARY KEY(id)
 );
 
